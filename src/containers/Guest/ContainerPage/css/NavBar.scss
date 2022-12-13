@@ -40,12 +40,12 @@ $res_768 : "only screen and (min-width: 768px) and (max-width: 991px)";
                 // font-style: italic;
                 // background: linear-gradient(90deg, #FF0080 0%, #FF8C00 100%);
                 background-image: url('../../../../assets/images/data/logo.png');
-                background-size: cover;
+                background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
                 cursor: pointer;
-                width: 40%;
-                height: 40%;
+                width: 55%;
+                height: 55%;
                           
                 @media screen and (max-width: 650px) {
                     display: none;

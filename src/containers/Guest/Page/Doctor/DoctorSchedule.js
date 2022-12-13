@@ -211,7 +211,7 @@ function DoctorSchedule(props) {
 
                         <span className="title-schedule" > Giá Khám: </span>{
                             !toggleDetailPrice &&
-                            <span>{formatCurrency(price)} đ</span>
+                            <b>{formatCurrency(price)} đ</b>
                         }
                         {
                             !toggleDetailPrice && <span className="show-detail" 
@@ -225,9 +225,9 @@ function DoctorSchedule(props) {
 
                             <div>
                                 <div className="show-detail-div">
-                                    <div style={{ background: "#eee" }}>
+                                    <div style={{ background: "#eee",padding: "10px" }}>
                                         <div class="price">
-                                            <div>Giá khám </div><div>{formatCurrency(price)} đ</div>
+                                            <div>Giá khám </div><b>{formatCurrency(price)} đ</b>
                                         </div>
                                         <div className="tuvan-font">Giá tư vấn 15 phút</div>
                                         <div class="tuvan-font">Giá tư vấn 30 phút</div>

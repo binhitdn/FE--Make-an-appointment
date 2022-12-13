@@ -70,7 +70,13 @@ function TopHospital(props) {
 
         return (       
             <div className="section-specialties">
-                <b><h5 >
+                <b><h5 
+                style={
+                    {
+                        fontWeight: "700"
+                    }
+                }
+                >
                         Cơ sở y tế
                 </h5></b>
                 <div className="specialty-content">

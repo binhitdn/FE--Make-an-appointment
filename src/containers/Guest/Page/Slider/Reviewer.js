@@ -14,11 +14,13 @@ function Reviewer() {
         <h1
         style={{
             textAlign: "center",
-            fontSize: "30px",
+            fontSize: "20px",
             fontWeight: "bold",
             marginTop: "50px",
+            textTransform: "uppercase",
+            fontWeight: "900",
         }}
-            > <i class="fa-solid fa-quote-left"></i> {lang === "ja" ? "お客様の声" : "Đánh giá từ khách hàng"} <i class="fa-solid fa-quote-right"></i></h1>
+            > {lang === "ja" ? "お客様の声" : "Đánh giá từ khách hàng về trang web"} </h1>
                 
     <Marquee
     direction="left"

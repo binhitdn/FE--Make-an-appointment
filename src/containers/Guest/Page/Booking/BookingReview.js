@@ -60,7 +60,8 @@ function BookingReview() {
 
         <div className="my-booking">
                 <div className="my-booking-header">
-                    <h3>My Booking</h3>
+                <i class="fa-solid fa-circle-check"></i>
+                    <span>Lịch khám đã hoàn thành</span>
                 </div>
                 <div className="my-booking-body">
           {

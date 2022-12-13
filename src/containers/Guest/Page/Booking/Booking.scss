@@ -40,3 +40,19 @@
       font-weight: 600;
     }
   }
+  .my-booking {
+    .my-booking-header {
+      padding: 20px 0;
+      i {
+        color: #04AA6D !important;
+        font-size: 30px;
+        margin-right: 10px;
+
+      }
+      span {
+        color: #04AA6D;
+        font-size: 20px;
+        font-weight: 800;
+      }
+    }
+  }

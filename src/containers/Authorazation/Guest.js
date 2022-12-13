@@ -18,7 +18,7 @@ import { useEffect } from 'react';
 import { AuthToken } from '../../utils/AuthToken';
 import DetailSpecialty from '../Guest/Page/Specialist/DetailSpecialty';
 import DoctorPage from '../Guest/Page/Doctor/DoctorPage';
-import ScrollToTop from '../ScrollToTop';
+import ScrollToTop2 from '../ScrollToTop';
 import HandBookDetail from '../Guest/Page/HandBook/HandBookDetail';
 import ProfileGuest from '../Guest/Page/Profile/ProfileGuest';
 import Booking  from '../Guest/Page/Booking/Booking';
@@ -29,6 +29,7 @@ import MainProfile from '../Guest/Page/Profile/MainProfile';
 import SideBarMobile from './SideBarMobile';
 import Login2 from './Login2';
 import MainBooking from '../Guest/Page/Booking/MainBooking';
+import ScrollToTop from "react-scroll-to-top";
 function Guest() {
   const { loading, setLoading } = useContext(AuthToken);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,7 +46,8 @@ function Guest() {
     return (
        <Fragment>   
               <BrowserRouter>  
-              {/* <ScrollToTop />       */}
+              <ScrollToTop2 />     
+              <ScrollToTop smooth color="#6f00ff" /> 
               <div className="containers">
               <div className="header">
                 <NavBar 

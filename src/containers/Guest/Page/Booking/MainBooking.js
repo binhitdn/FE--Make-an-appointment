@@ -53,9 +53,9 @@ function MainBooking() {
                 </div>
             </div>
             <div className="main-profile__content">
-                <div className="main-profile__content_title">
-                    <b className="main-profile__content_title_title">Thông tin cá nhân</b>
-                </div>
+                {/* <div className="main-profile__content_title">
+                    <b className="main-profile__content_title_title">Lịch hẹn</b>
+                </div> */}
                 <div className="main-profile__content_content">
                     {
                         selectedItem === 1 && <Booking />
