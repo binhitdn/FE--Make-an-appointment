@@ -1,0 +1,123 @@
+.doctor-schedule {
+    font-family:"Montserrat", sans-serif !important;
+    width: 100%;
+}
+.content-1 {
+   margin: 12px 0;
+   
+}
+.select-date {
+    height: 38px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 3px solid rgba(52, 11, 11, 0.523);
+    color: rgb(93, 93, 248);
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 3px;
+}
+.option-doctor {
+    height: 36px;
+}
+.doctor-schedule-t  {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    padding: 10px 0;
+    @media screen and (max-width: 768px) {
+        flex-direction: column !important;
+        align-items: center;
+    
+        
+    }
+    .doctor-schedule-button {
+        flex: 1;
+        border-right: 2px solid orange;
+        width: 100%;
+        @media screen and (max-width: 768px) {
+            border-right: none;
+            border-bottom: 2px solid orange;
+            width: 100%;
+        
+            
+        
+            
+        }
+    }
+    .doctor-schedule-info {
+        padding-left: 40px;
+        width: 100%;
+        flex: 1;
+        @media screen and (max-width: 768px) {
+            padding-left: 0;
+            width: 100%;
+        
+            
+        }
+    }
+}
+
+
+
+.button-select-time {
+    height: 36px;
+    padding: 0 10px;
+    border: none;
+    background-color: rgb(246, 246, 169);
+    border-radius: 3px;
+   min-width: 110px;
+    margin: 10px 0;
+    margin-right: 10px;
+
+
+}
+.button-select-time:hover {
+    border: 2px solid rgb(134, 146, 6);
+}
+.no-schedule {
+    height: 130px;
+    padding-top:40px;
+}
+.title-schedule {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #666;
+    font-weight: bold;
+    padding: 4px 0;
+}
+.name-clinic {
+    font-size: 13px;
+    padding: 3px 0;
+    font-weight: bold;
+}
+.show-detail {
+    color: rgb(0, 4, 255);
+    padding: 3px 5px;
+    cursor: pointer;
+}
+.show-detail-div {
+    margin: 0 auto;
+    width: 90%;
+    background-color: #fff;
+}
+.show-detail-div-price {
+    padding: 10px 0;
+    border-top: 1px solid rgb(78, 50, 50);
+    border-bottom: 1px solid rgb(78, 50, 50);
+}
+.price {
+    display: flex;
+    justify-content: space-between;
+}
+.payment {
+    border-top: 1px solid #ddd;
+    padding: 8px 3px 3px 3px;
+    vertical-align: middle;
+    background-color: #ccc;
+}
+.tuvan-font {
+    display: block;
+    color: #666;
+    font-size: 10px;
+}

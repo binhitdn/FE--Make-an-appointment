@@ -1,0 +1,126 @@
+@import url("https://site-assets.fontawesome.com/releases/v6.1.2/css/all.css");
+
+html[data-theme="dark"]  {
+    --color: rgb(250, 250, 250);
+    --background-color: rgb(5, 5, 5);
+    --background-color-menu: rgb(194, 176, 176);
+  }
+  html[data-theme="light"]  {
+    --color: rgb(5, 5, 5);
+    --background-color: rgb(250, 250, 250);
+    --background-color-menu: rgb(194, 176, 176);
+
+
+  }
+.anh1 {
+    height: 100px;
+}
+.section-specialties {
+    font-family: "Montserrat", sans-serif;
+    width: 85vw;
+    margin: 0 auto;
+    margin-top: 20px;
+    background-color: var(--background-color);
+    .section-specialties-title {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 13px;
+        h4 {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        a {
+            color: #000;
+            text-decoration: none;
+            background-color: #cccccc;
+            font-size: 9px;
+            display: block;
+            text-align: center;
+            padding: 7px;
+        }
+    }
+    
+    .img-customize {
+        height: 300px;
+        border-radius: 10px;
+        height: 100%;
+        cursor: pointer;
+        
+        
+        .section-specialty-item {
+            width: 90%;
+            margin: 0 auto;
+            height: 100%;
+
+            div {
+                width: 211px;
+                height: 121px;
+                width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover !important;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    
+            }
+            h4 {
+                font-size: 15px;
+                color: #000;
+                margin-top: 10px;
+                box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+            }
+            li {
+                color: rgb(90, 86, 86);
+                font-size: 13px;
+            }
+            a {
+                text-decoration: none;
+                text-align: center;
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+
+.slick-prev {
+    width: 50px !important;
+    height: 50px !important;
+    left: -25px !important;
+    font-size: 30px !important;
+    position: none !important;
+    z-index: 1 !important;
+}
+.slick-next {
+    height: 50px !important;
+    right: -25px !important;
+    font-size: 30px !important;
+    z-index: 1 !important;
+    top: 50%;
+}
+.slick-next::before {
+    color:rgb(54, 50, 50) !important;
+    font-family: "Font Awesome 6 Pro" !important;
+    content: '\f33b' !important; 
+    font-style: normal;
+    font-weight: 900 !important;
+    font-size:25px !important;
+    padding: 8px !important;
+    margin: 0 !important;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.807) !important;
+    border: 2px solid #ccc !important;
+}
+.slick-prev::before {
+    color:rgb(54, 50, 50) !important;
+    font-family: "Font Awesome 6 Pro" !important;
+    content: '\f33a' !important; 
+    font-style: normal;
+    font-weight: 900 !important;
+    font-size:25px !important;
+    padding: 8px !important;
+    margin: 0 !important;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.807) !important;
+    border: 2px solid #ccc !important;
+
+}

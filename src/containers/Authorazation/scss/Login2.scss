@@ -1,0 +1,26 @@
+.form-login {
+
+}
+.photo-login {
+
+}
+@keyframes form-login-login {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+
+    
+}
+@keyframes form-login-register {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+
+    
+}

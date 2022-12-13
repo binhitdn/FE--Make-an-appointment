@@ -1,0 +1,141 @@
+menu-big {
+    list-style: none !important;
+}
+.sidebar {
+    
+    border-right: 1px solid #e5e5e5;
+    height: 100vh;
+    min-width: 260px;
+    padding: 0 20px;
+    // background-color: #f1fea9;
+    padding-top: 20px;
+    border-radius: 5px;
+
+
+    .sidebar__logo {
+        background-image: url("../../../../assets/images/data/logo.png");
+        height: 50px;
+        
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-bottom: 20px;
+
+    }
+    .sidebar__menu {
+        ul {
+            list-style: none;
+            padding: 0;
+            li {
+               padding: 7px 0;
+               width: 100%;
+                a {
+                    display: block;
+                    text-decoration: none;
+                    color: #000;
+                    font-size: 15px;
+                    width: 100%;
+                    cursor: pointer;
+                    padding: 0 20px;
+                    span {
+                        color: rgb(90, 90, 90);
+                    }
+                    .fa {
+                        min-width: 30px;
+                        color: rgb(90, 90, 90) !important;
+                    }
+                    ul {
+                        list-style: none;
+                        padding: 0;
+                        width: 100%;
+                        display: none;
+                        li {
+                           display: block;
+                            width: 100%;
+                            padding: 0;
+                            a {
+                                display: block;
+                                width: 100%;
+                                text-decoration: none;
+                                padding: 10px 20px;             
+                                color: #000 !important;
+                                font-size: 12px;
+                                width: 100%;
+                            
+                            }
+                            .active {
+                                background-color: #f1fea9;
+                                color: #000 !important;
+                            }
+                                span {
+                                    color: #000 !important;
+                                }
+                                .fa {
+                                    width: 15px;
+                                    padding-right: 30px;
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+           
+        
+
+    }
+
+
+ 
+
+.non_active {
+    background-color: #fff !important;
+    ul {
+        display: none !important;
+    }
+    
+}
+.nav-item {
+    
+    
+    
+}
+.nav-item-2 {
+    margin-left: 30px !important;
+}
+.nav-link {
+    color: #fff !important;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 10px 12px !important;
+}
+
+.active-nav {
+    
+    // color: #eaedf2 !important;
+    
+    
+    color: #eaedf2;
+    background-color: #ffe75d !important;
+    border: 0.0625rem solid #4c5680;
+
+}
+.icon-sidebar-menu {
+    color: #fff !important;
+    font-size: 15px !important;
+    display: inline-block;
+    width: 15px !important;
+    min-width: 30px !important;
+
+    
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    
+    color: #242527;
+    background-color: #e5ffba;
+    border: 0.0625rem solid #4c5680;   
+}
+
+

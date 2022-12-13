@@ -1,0 +1,41 @@
+
+.button-time {
+    padding: 10px;
+    margin: 20px;
+
+    border: none;
+    color: black;
+    border-radius: 5px;
+    &.active {
+        background-color: #89f38d !important;
+    }
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    .button-save {
+        padding: 10px;
+        margin: 0 20px;
+        border: none;
+        color: black;
+        border-radius: 5px;
+        background-color: #4284f7;
+    }
+}
+.more-info {
+    display: flex;
+    .content {
+
+    }
+    .content-2 {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+

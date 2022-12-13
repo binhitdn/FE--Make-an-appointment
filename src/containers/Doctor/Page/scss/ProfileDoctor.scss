@@ -1,0 +1,16 @@
+.ProfileDoctor__avatar {
+    border-radius: 50%;
+    outline: 1px solid #5230b0;
+    border: 1px solid #e6e6e6;
+    overflow: hidden;
+    width: 100px;
+    .image-avatar {
+        height: 100px;
+        width: auto; 
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+}
+

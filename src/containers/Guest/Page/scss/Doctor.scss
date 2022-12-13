@@ -1,0 +1,119 @@
+.doctor-page {
+    .doctor-page__header {
+        padding: 0 100px;
+    }
+    .doctor-page__search {
+        display: flex;
+        justify-content: flex-end;
+        .search {
+            text-align: center;
+            border: 1px solid transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            width: 400px;
+            border-radius: 5px;
+            background: #e9df9c;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-right: 20px;
+            @media screen and (max-width: 650px) {
+              width: 80%;
+           }
+            .fa-search {
+                font-size: 15px;
+                color: rgb(18, 17, 17);
+                margin:0 5px;
+                
+            }
+            input {
+            
+                width: 100%;
+                border: none;
+                outline: none;
+                font-size: 14px;
+                color: rgb(40, 22, 22);
+                padding: 0 10px;
+                border: none;
+                background: transparent;
+            
+          }
+          
+          }
+    }
+    
+    .doctor-page__content {
+        padding-left: 80px;
+        padding-right: 80px;
+        @media screen and (max-width: 650px) {
+            padding-left: 0;
+            padding-right: 0;
+         
+            
+        }
+        .doctor-title-outstanding {
+            background: #cab008;
+            padding: 10px;
+            display: inline-block;
+            transform: skew(-20deg, 0deg);
+        }
+        .doctor-page__content__doctors {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            width: 100%;
+            
+            .img-customize {
+              flex: 1;
+              min-width: 275px;
+              max-width: 275px;
+                border-radius: 5px;
+                box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+                
+                padding: 10px;
+                text-decoration: none;
+                @media screen and (max-width: 650px) {
+                  width: 100%;
+                    
+                }
+              &:hover {
+                
+                
+                .anh-bac-si {
+                    transform: scale(1.2); 
+                }
+                .name {
+                    transform: scale(1.1);
+                }
+                
+            
+              } 
+              .name {
+                padding-top: 10px;
+                text-align: center;
+                font-size: 12px;
+                .name-doctor {
+                    font-weight: bold;
+                }
+              }
+            }
+        }
+               
+    }
+}
+.anh-bac-si {
+    width: 80px;
+                height: 80px;
+                margin: 0 auto;           
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover !important;
+    border-radius: 50%;
+}
+.fa-star  {
+    color: yellow;
+    font-size: 15px;
+    margin-right: 5px;
+
+}

@@ -1,0 +1,33 @@
+.handbook-section-title {
+
+    font-size: 30px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 30px;
+    text-align: center;
+    margin-top: 30px;
+}
+.handbook-section-content {
+    .handbook-section-items {
+        .handbook-section-item {
+            display: flex !important;
+            
+            border-radius: 10px;
+            overflow: hidden;
+            gap: 20px;
+            .handbook-section-item-img {
+                height: 150px;
+                width: 400px;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                flex: 1;
+                border-radius: 10px;       
+            }
+            .handbook-section-item-content {
+               flex: 1;
+            }
+        }
+    }
+    
+}

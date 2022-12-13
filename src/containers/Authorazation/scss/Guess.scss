@@ -1,0 +1,100 @@
+body {
+  overflow: unset;
+}
+html[data-theme="dark"]  {
+  --color: rgb(250, 250, 250);
+  --background-color: rgb(5, 5, 5);
+  --background-color-menu: rgb(194, 176, 176);
+}
+html[data-theme="light"]  {
+  --color: rgb(5, 5, 5);
+  --background-color: rgb(250, 250, 250);
+  --background-color-menu: rgb(194, 176, 176);
+
+
+}
+$breakpoints: (
+    phone-sm: 420px,
+    phone: 767px,
+    tablet: 768px,
+    tablet-lg: 1024px,
+    desktop: 1025px,
+    desktop-lg: 1600px
+);
+@mixin for-size($breakpoint) {
+
+    //Kiểm tra breakpoint truyền vào có tồn tại như bạn đã định nghĩa hay không.
+    @if map-has-key($breakpoints, $breakpoint) {
+    
+    // Lấy giá trị pixel breakpoint đó
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+    
+    //Build media query tự động
+      @media (max-width: $breakpoint-value) {
+        //Những gì bạn mong muốn sẽ được lồng vào @content
+        @content;
+      }
+    } 
+}
+.containers {
+    width: auto;
+    height: auto;
+    margin: 0 auto !important;
+    padding: 0;
+    background-color: var(--background-color);
+    overflow: hidden;
+    
+    
+    
+  
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        z-index: 1000;
+        border-bottom: 1px solid #bf4444;
+        
+    }
+    .bodys {
+        width: 100% !important;
+        margin-top: 60px;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        
+        height: calc(100vh - 50px);
+        height: 100%;
+
+        .sidebars {
+           height: calc(100vh - 50px);
+           @include for-size(tablet-lg) {
+            display:none;
+          }
+           
+           
+        }
+        .content {
+            padding-left: 90px;
+            width: 95%;
+            margin: 0 auto;
+            background-color: var(--background-color) !important;
+            
+            color: var(--color) !important;
+            @include for-size(tablet-lg) {
+                padding-left: 0;
+              }
+        }
+
+    }
+}
+
+a {
+    text-decoration: none;
+    color: var(--color);
+}
+
+
+
+

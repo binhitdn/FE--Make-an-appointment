@@ -1,0 +1,53 @@
+.content .toggle{
+	--size: 60px;
+	width:var(--size);
+	height:calc(var(--size) / 2);
+	position:relative;
+	background:#fff;
+	border-radius:var(--size);
+	border: 1px solid #ddd;
+	margin: 0 10px;
+}
+
+.content .toggle .btn{
+	width:calc(var(--size) / 2);
+	height:100%;
+	position:absolute;
+	left:0;
+	background:rgb(212, 255, 0);
+	border-radius:50%;
+	transition:all ease 0.5s;
+}
+.content .toggle .btn:hover{
+	cursor:pointer;
+	outline: 5px outset rgb(0, 8, 255);
+}
+
+.content input:checked + .toggle .btn{
+	left:50%;
+	background:#5800fc;
+	
+}
+
+.content input:disabled + .toggle{
+	background:#ddd;
+}
+
+.content p{
+	margin:8px 0;
+	font-size:0.75em;
+	color:#333;
+}
+.btn-mode {
+	background: #fff;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 5px 10px;
+	color: #333;
+	font-size: 0.75em;
+	cursor: pointer;
+	transition: all ease 0.5s;
+}
+.fas {
+	text-align: center;
+}

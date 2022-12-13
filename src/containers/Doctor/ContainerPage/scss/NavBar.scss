@@ -1,0 +1,24 @@
+.navbar {
+    height: 60px;
+    display: flex;
+    .navbar__logo {
+        
+    }
+    .navbar__menu {
+        
+        ul {
+            list-style: none;
+            display: flex;
+            li {
+                margin: 0 20px;
+                a {
+                    text-decoration: none;
+                    color: #000;
+                    font-size: 20px;
+                }
+            }
+        }
+        
+    }
+
+}

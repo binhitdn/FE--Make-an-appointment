@@ -1,0 +1,57 @@
+.booking-modal-container {
+    border-radius: 5px;
+    width: 80% !important;
+
+}
+.modal-header {
+    background-color: rgb(230, 240, 210) !important;
+    color: #000 !important;
+    .modal-title {
+        text-transform: uppercase;
+        padding: 10px;
+        color: rgb(0, 0, 0);
+        font-weight: 700 !important;
+    }
+}
+.input-icon {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 5px 10px;
+    display: flex;
+    margin-bottom: 10px;
+    
+    .input-icon-icon {
+        font-size: 15px;
+        padding: 5px 5px;
+    }
+    .input-icon-input {
+        border: none !important;
+        outline: none !important;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+}
+.button {
+    border: none;
+    outline: none;
+    background-color: rgb(0, 4, 255);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.btn-continue {
+    background-color: rgb(143, 255, 62);
+    color: #fff;
+}
+.btn-exit {
+    background-color: rgb(146, 149, 140);
+    color: #fff;
+}
+.select-price {
+    padding: 10px;
+    border: 1px solid red;
+    border-radius: 3px;
+    width: 130px;
+}

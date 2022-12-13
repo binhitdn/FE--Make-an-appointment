@@ -1,0 +1,229 @@
+.hand-book-detail__content__content {
+    width: 80%;
+    margin: 0 auto;
+}
+.hand-book-detail__content__footer {
+    .hand-book-detail__content__footer__comment {
+        width: 60%;
+        margin: 0 auto;
+        border: 1px solid #e5e5e5;
+        border-radius: 5px;
+         
+        .hand-book-detail__content__footer__comment_textarea {
+            
+
+            
+            margin: 0 auto;
+            display: block;
+            border: 1px solid #ccc;
+            outline: none;
+            width: 100%;
+            background-color: #fff;
+            
+            border: none;
+
+            
+            
+            
+        }
+        .hand-book-detail__content__footer__comment__button {
+    
+            display: flex;
+            justify-content: flex-end;
+            button {
+               
+                background-color: #fff;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                padding: 10px 20px;
+                border-radius: 5px;
+                font-size: 18px;
+                letter-spacing: 2px;
+                font-weight: 800;
+            }
+
+        }
+    }
+    .hand-book-detail__content__footer__comment__list {
+        .hand-book-detail__content__footer__comment__list__item {
+            .hand-book-detail__content__footer__comment__list__item__header {
+                display: flex;
+                .hand-book-detail__content__footer__comment__list__item__avatar {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    
+                    
+                }
+                .hand-book-detail__content__footer__comment__list__item__name {
+                    margin-left: 10px;
+                    font-size: 18px;
+                    font-weight: 800;
+                    letter-spacing: 2px;
+                    color: #000;
+                    align-self: flex-end;
+                    display: flex;
+
+                }
+                .hand-book-detail__content__footer__comment__list__item__date {
+                    display: flex;
+                    align-self: flex-end;
+                }
+            }
+            .hand-book-detail__content__footer__comment__list__item__content {
+                margin-left: 60px;
+                font-size: 16px;
+                font-weight: 500;
+                letter-spacing: 2px;
+                color: #000;
+                margin-top: 10px;
+
+            }
+            .hand-book-detail__content__footer__comment__list__item__footer {
+                display: flex;
+                gap: 20px;
+                margin-left: 60px;
+                .hand-book-detail__content__footer__comment__list__item__footer__like {
+                    color: rgb(232, 70, 97);
+                    font-size: 22px;
+                    cursor: pointer;
+                    
+                }
+                .hand-book-detail__content__footer__comment__list__item__footer__comment {
+                    color: rgb(130, 100, 105);
+                    font-size: 22px;
+                    cursor: pointer;
+                    
+                }
+                
+            }
+            .hand-book-detail__content__footer__comment__list__item__reply {
+                margin-left: 120px;
+                .hand-book-detail__content__footer__comment__list__item__reply__box {
+                    display: flex;
+                    gap: 10px;
+                    input[type="text"] {
+                        width: 600px;
+                        
+                        outline: none;
+                        border-bottom: 1px solid #ccc;
+                        
+                        
+                    }
+                    input[type="submit"] {
+                        background-color: #fff;
+                        border: none;
+                        outline: none;
+                        cursor: pointer;
+                        padding: 10px 20px;
+                        border-radius: 5px;
+                        font-size: 18px;
+                        letter-spacing: 2px;
+                        font-weight: 800;
+                        display: flex;
+                        justify-content: start;
+
+                    }
+                    
+                }
+
+            }
+            
+        }
+    }
+}
+.hand-book-detail__content__footer__comment__login {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    p {
+        font-size: 18px;
+        a {
+            color: rgb(232, 70, 97);
+            font-weight: 800;
+            letter-spacing: 2px;
+            font-size: 18px;
+        }
+    }
+
+}
+.hand-book-detail {
+    margin-top: 40px;
+    .hand-book-detail__content {
+        .hand-book-detail__content__title {
+            .title {
+                font-size: 30px;
+                font-weight: 700;
+                letter-spacing: 1px;
+                color: #000;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+        }
+        .hand-book-detail__content__note {
+            p {
+                i {
+                    font-size: 13px;
+                    font-weight: 300;
+                    letter-spacing: 0.5px;
+                    color: #000;
+                    display: inline-block;
+                    margin-right: 5px;
+                }
+            }
+            width: 90%;
+           
+        }
+        .hand-book-detail__content__description {
+            padding: 10px;
+            margin: 30px 20px;
+            border-radius: 10px;
+            background-color: rgb(206, 248, 180);
+            width: 90%;
+            margin: 0 auto;
+            margin-bottom: 30px;
+            
+            
+            p {
+                font-size: 16px;
+                font-weight: 300;
+                letter-spacing: 1px;
+                color: #000;
+                display: block;
+                padding: 10px;
+            }
+        }
+        .hand-book-detail__content__content {
+            .hand-book-detail__content__content__background {
+                border-radius: 10px;
+
+            }
+        }
+    }
+}
+
+.hand-book-detail__content__footer__comment__list__item__reply__list__item {
+    .hand-book-detail__content__footer__comment__list__item__reply__list__item__header {
+        display: flex;
+        .hand-book-detail__content__footer__comment__list__item__reply__list__item__avatar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .hand-book-detail__content__footer__comment__list__item__reply__list__item__name {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .hand-book-detail__content__footer__comment__list__item__reply__list__item__date {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+    }
+}

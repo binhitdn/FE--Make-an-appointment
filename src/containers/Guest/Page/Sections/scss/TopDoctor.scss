@@ -1,0 +1,105 @@
+@import url("https://site-assets.fontawesome.com/releases/v6.1.2/css/all.css");
+
+.section-doctor-trend {
+    margin-top: 40px;
+    width: 85vw;
+    margin: 0 auto;
+    .section-specialties-title {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 13px;
+        h4 {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        a {
+            color: #000;
+            text-decoration: none;
+            background-color: #cccccc;
+            font-size: 9px;
+            display: block;
+            text-align: center;
+            padding: 7px;
+        }
+    }
+    .img-customize {
+        border-radius: 10px;
+        height: 100%;
+        padding: 12px;
+        .section-doctor-trend-item {
+            width: 90%;
+            margin: 0 auto;
+            height: 100%;
+            
+            .anh-bac-si {
+                width: 80px;
+                height: 80px;
+                margin: 0 auto;           
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover !important;
+    border-radius: 50%;
+    
+    
+            }
+            
+        }
+        .name {
+            font-size: 10px;
+            color: rgb(58, 50, 50);
+            text-align: center;
+            display: block;
+        }
+        .specialty {
+            font-size: 9px;
+            color: rgb(86, 82, 82);
+            text-align: center;
+            display: block;
+            margin-bottom: 40px;
+        }
+    }
+}
+
+
+.slick-prev {
+    width: 50px !important;
+    height: 50px !important;
+    left: -25px !important;
+    font-size: 30px !important;
+    position: none !important;
+    z-index: 1 !important;
+}
+.slick-next {
+    height: 50px !important;
+    right: -25px !important;
+    font-size: 30px !important;
+    z-index: 1 !important;
+    top: 50%;
+}
+.slick-next::before {
+    color:rgb(54, 50, 50) !important;
+    font-family: "Font Awesome 6 Pro" !important;
+    content: '\f33b' !important; 
+    font-style: normal;
+    font-weight: 900 !important;
+    font-size:25px !important;
+    padding: 8px !important;
+    margin: 0 !important;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.807) !important;
+    border: 2px solid #ccc !important;
+}
+.slick-prev::before {
+    color:rgb(54, 50, 50) !important;
+    font-family: "Font Awesome 6 Pro" !important;
+    content: '\f33a' !important; 
+    font-style: normal;
+    font-weight: 900 !important;
+    font-size:25px !important;
+    padding: 8px !important;
+    margin: 0 !important;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.807) !important;
+    border: 2px solid #ccc !important;
+
+}

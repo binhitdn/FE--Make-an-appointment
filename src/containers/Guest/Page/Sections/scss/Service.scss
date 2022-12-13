@@ -1,0 +1,115 @@
+@import url("https://site-assets.fontawesome.com/releases/v6.1.2/css/all.css");
+
+
+html[data-theme="dark"]  {
+    --color: rgb(250, 250, 250);
+    --background-color: rgb(5, 5, 5);
+  }
+  html[data-theme="light"]  {
+    --color: rgb(5, 5, 5);
+    --background-color: rgb(250, 250, 250);
+  }
+
+ul {
+    list-style:square;
+}
+.anh1 {
+    height: 100px;
+}
+.section-specialty {
+    font-family: "Montserrat", sans-serif;
+    height: 330px;
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 15px;
+    
+    .img-customize {
+        height: 300px;
+        border-radius: 10px;
+        cursor: pointer;
+        
+        .section-specialty-item {
+            width: 90%;
+            margin: 0 auto;
+            .section-specialty-item-name {
+                color: var(--color);
+            }
+            
+            div {
+                border-radius: 10px;
+                width: 197px;
+                height: 111px;
+                width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover !important;
+    
+            }
+            h4 {
+                font-size: 15px;
+                color: #000;
+                margin-top: 10px;
+            }
+            li {
+                color: rgb(90, 86, 86);
+                font-size: 13px;
+                color: var(--color);
+            }
+            a {
+                text-decoration: none;
+                text-align: center;
+                margin-top: 10px;
+                
+            }
+            .xemthem {
+                color: #4b49db;
+                font-size: 14px;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+
+.slick-prev {
+    width: 50px !important;
+    height: 50px !important;
+    left: -25px !important;
+    font-size: 30px !important;
+    position: none !important;
+    z-index: 1 !important;
+}
+.slick-next {
+    width: 50px !important;
+    height: 50px !important;
+    right: -25px !important;
+    font-size: 30px !important;
+    position: none !important;
+}
+.slick-next::before {
+    color:rgb(54, 50, 50) !important;
+    font-family: "Font Awesome 6 Pro" !important;
+    content: '\f324' !important; 
+    font-style: normal;
+    font-weight: 900 !important;
+    font-size:25px !important;
+    padding: 8px !important;
+    margin: 0 !important;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.807) !important;
+    border: 2px solid #ccc !important;
+}
+.slick-prev::before {
+    color:rgb(54, 50, 50) !important;
+    font-family: "Font Awesome 6 Pro" !important;
+    content: '\f323' !important; 
+    font-style: normal;
+    font-weight: 900 !important;
+    font-size:25px !important;
+    padding: 8px !important;
+    margin: 0 !important;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.807) !important;
+    border: 2px solid #ccc !important;
+
+}
