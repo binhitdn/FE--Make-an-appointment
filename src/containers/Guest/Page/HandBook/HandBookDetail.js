@@ -170,9 +170,9 @@ function HandBookDetail() {
                     <h4 className="title">{title}</h4>
                 </div>
                 <div className="hand-book-detail__content__note">
-                    <p><i class="fa-solid fa-user-pen"></i>Tác giả: {poster}</p>
-                    <p><i class="fa-solid fa-eye"></i>Lượt xem: {view}</p>
-                    <p><i class="fa-solid fa-plus"></i>Ngày đăng: {datePoster} </p>
+                    <p><b><i class="fa-solid fa-user-pen"></i>Tác giả:</b> {poster}</p>
+                    <p><i class="fa-solid fa-eye"></i><b>Lượt xem:</b> {view}</p>
+                    <p><i class="fa-solid fa-plus"></i><b>Ngày đăng:</b> {datePoster} </p>
                 <div className="hand-book-detail__content__description">
                     <p className="description">{description}</p>
                 </div>
@@ -184,9 +184,7 @@ function HandBookDetail() {
                     </div>
                 <div dangerouslySetInnerHTML={{ __html: contentHTML }} 
                 
-                        // style={
-                        //     styleDescription
-                        // }
+                        className="hand-book-detail__content__content__html"
                         ></div>
                 </div>
                 <div className="hand-book-detail__content__footer">
@@ -219,7 +217,9 @@ function HandBookDetail() {
                                     <div className="hand-book-detail__content__footer__comment__list__item">
                                     <div className="hand-book-detail__content__footer__comment__list__item__header">
                                             <div className="hand-book-detail__content__footer__comment__list__item__avatar"
-                                                style={{backgroundImage: `url('https://kiemtientuweb.com/ckfinder/userfiles/images/avatar-fb/avatar-fb-1.jpg')`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat", height: "50px", width: "50px"}}
+                                                style={{backgroundImage: `url(
+                                                    ${item.userData2.image}
+                                                )`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat", height: "50px", width: "50px"}}
                                                 >       
                                             </div>
                                             <div className="hand-book-detail__content__footer__comment__list__item__name">
@@ -240,10 +240,12 @@ function HandBookDetail() {
                                     </div>
                                     <div className="hand-book-detail__content__footer__comment__list__item__footer">
                                         <div className="hand-book-detail__content__footer__comment__list__item__footer__like">
-                                            <i class="fa-solid fa-heart"></i>
+                                            <i class="fa-solid fa-heart"
+                                            style={{color: "#ccc"}}
+                                            ></i>
                                             <p>
                                                {
-                                                Math.floor(Math.random() * 100)
+                                                0
                                                }
                                             </p>
                                         </div>
@@ -255,7 +257,7 @@ function HandBookDetail() {
                                         >
                                             <i class="fa-solid fa-comment"></i>
                                             <p>{
-                                                Math.floor(Math.random() * 100)
+                                                0
                                                 }</p>
                                         </div>
                                     </div>

@@ -94,11 +94,18 @@
 }
 .doctor-review-component {
     .doctor-review {
+        i {
+            color: rgb(134, 148, 43);
+            font-size: 20px;
+            margin-right: 5px;
+        }
         text-align: center;
-        font-size: 30px;
-        font-weight: 700;
+        font-size: 26px;
+        font-weight: 900;
         letter-spacing: 0.75px;
-        color: rgb(229, 255, 60);
+        color: rgb(134, 148, 43);
+        text-transform: uppercase;
+
         margin-top: 50px;
     }
 }
@@ -175,4 +182,10 @@
 
     }
 }
+}
+.star-web {
+    color: #f9b115;
+    font-size: 18px;
+    margin-right: 5px;
+
 }

@@ -1,3 +1,4 @@
+import { floor, isInteger } from "lodash";
 import moment from "moment";
 import { useEffect } from "react";
 import { Fragment } from "react";
@@ -94,6 +95,29 @@ function DoctorPage() {
         }
         countView();
     }, [loading])
+    // for (const [i, product] of products.entries()) {
+    //     list.push(<li>{product}</li>)
+    //   }
+    
+    let renderReview = () => {
+        const list = []
+        for (let i = 1; i <= rateDoctor; i++) {
+            console.log(i);
+            list.push(<i className="fas fa-star star-web"></i>) 
+        }
+        if(rateDoctor % 1 !== 0) {
+            list.push(<i className="fas fa-star-half-alt star-web"></i>)
+        }
+        for (let i = 1; i <= 5 - Math.round(rateDoctor); i++) {
+            list.push(<i className="fa-regular fa-star star-web"></i>)
+        }
+        return list;
+    }
+
+    
+
+      
+            
     return (
         <Fragment>
                
@@ -115,7 +139,84 @@ function DoctorPage() {
                             </h6>
                             <div className="doctor-rate">
                                 <div className="doctor-rate-star">
-                                    {rateDoctor} <i className="fas fa-star"></i>
+                                    {
+                                        rateDoctor === "Chưa có đánh giá" ? rateDoctor : (
+                                            <Fragment>
+                                                
+                                                {
+                                                    // isInteger(rateDoctor) ? (
+                                                    //     <Fragment>
+                                                    //         <i 
+                                                    //         className={
+                                                    //             rateDoctor >= 1 ? "fas fa-star" : "fa-regular fa-star"
+                                                    //         }
+                                                            
+                                                    //         ></i>
+                                                    //         <i
+                                                    //         className={
+                                                    //             rateDoctor >= 2 ? "fas fa-star" : "fa-regular fa-star"
+                                                    //         }
+                                                    //         ></i>
+                                                    //         <i
+                                                    //         className={
+                                                    //             rateDoctor >= 3 ? "fas fa-star" : "fa-regular fa-star"
+                                                    //         }
+                                                    //         ></i>
+                                                    //         <i
+                                                    //         className={
+                                                    //             rateDoctor >= 4 ? "fas fa-star" : "fa-regular fa-star"
+                                                    //         }
+                                                    //         ></i>
+                                                    //         <i
+                                                    //         className={
+                                                    //             rateDoctor >= 5 ? "fas fa-star" : "fa-regular fa-star"
+                                                    //         }
+                                                    //         ></i>
+                                                    //     </Fragment>
+                                                    // ) : (
+                                                    //     <Fragment>
+                                                    //         <i
+                                                    //         className={
+                                                    //             rateDoctor >= 1 ? "fas fa-star" : "fa-duotone fa-star-half-stroke"
+                                                    //         }
+                                                    //         ></i>
+                                                    //         <i
+                                                    //         className={
+                                                    //             rateDoctor >= 2 ? "fas fa-star" : "fa-duotone fa-star-half-stroke"
+                                                    //         }
+                                                    //         ></i>
+                                                    //         <i
+                                                    //         className={
+                                                    //             rateDoctor >= 3 ? "fas fa-star" : "fa-duotone fa-star-half-stroke"
+                                                    //         }
+                                                    //         ></i>
+                                                    //         <i
+                                                    //         className={
+                                                    //             rateDoctor >= 4 ? "fas fa-star" : "fa-duotone fa-star-half-stroke"
+                                                    //         }
+                                                    //         ></i>
+                                                    //         <i
+                                                    //         className={
+                                                    //             rateDoctor >= 5 ? "fas fa-star" : "fa-duotone fa-star-half-stroke"
+                                                    //         }
+                                                    //         ></i>
+
+                                                    //     </Fragment>
+
+
+                                                            
+                                                        
+
+                                                    // )
+                                                    renderReview()
+                                                }
+                                                {
+                                                    rateDoctor
+                                                }
+                                            </Fragment>
+                                        )
+                                    }
+                                    
                                 </div>
                             </div>
 

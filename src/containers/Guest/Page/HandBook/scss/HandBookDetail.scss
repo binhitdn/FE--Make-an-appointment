@@ -1,5 +1,5 @@
 .hand-book-detail__content__content {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
 }
 .hand-book-detail__content__footer {
@@ -163,6 +163,7 @@
             }
         }
         .hand-book-detail__content__note {
+            margin: 0 auto;
             p {
                 i {
                     font-size: 13px;
@@ -170,18 +171,19 @@
                     letter-spacing: 0.5px;
                     color: #000;
                     display: inline-block;
-                    margin-right: 5px;
+                   
+                    
                 }
             }
-            width: 90%;
+            width: 80%;
            
         }
         .hand-book-detail__content__description {
             padding: 10px;
-            margin: 30px 20px;
+            
             border-radius: 10px;
             background-color: rgb(206, 248, 180);
-            width: 90%;
+            width: 80%;
             margin: 0 auto;
             margin-bottom: 30px;
             
@@ -198,7 +200,19 @@
         .hand-book-detail__content__content {
             .hand-book-detail__content__content__background {
                 border-radius: 10px;
+                margin-bottom: 40px;
 
+            }
+            .hand-book-detail__content__content__html {
+                
+                line-height: 2;
+                width: 90%;
+                margin: 0 auto;
+                img {
+                    width: 100%;
+                    border-radius: 10px;
+                    height: auto;
+                }
             }
         }
     }
