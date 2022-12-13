@@ -127,13 +127,17 @@ menu-big {
 //     border: 0.0625rem solid #4c5680;   
 // }
 .submenu {
-    background-color: rgb(238, 252, 193);
+    background-color: rgb(247, 251, 237);
     margin-left: 25px !important;
     border-radius: 5px;
     list-style: none !important;
     li {
         .link-submenu {
             font-size: 12px !important;
+            color: #000 !important;
         }
     }
+}
+.fa-solid {
+    color: #000 !important;
 }

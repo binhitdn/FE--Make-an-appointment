@@ -14,9 +14,9 @@ menu-big {
 
     .sidebar__logo {
         background-image: url("../../../../assets/images/data/logo.png");
-        height: 50px;
+        height: 40px;
         
-        background-size: cover;
+        background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
         margin-bottom: 20px;
@@ -64,7 +64,7 @@ menu-big {
                             
                             }
                             .active {
-                                background-color: #f1fea9;
+                                background-color: #fcffeb;
                                 color: #000 !important;
                             }
                                 span {
@@ -134,8 +134,8 @@ menu-big {
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     
     color: #242527;
-    background-color: #e5ffba;
-    border: 0.0625rem solid #4c5680;   
+    background-color: #f9ffef;
+    border: 0.0625rem solid #d7e7f9;   
 }
 
 

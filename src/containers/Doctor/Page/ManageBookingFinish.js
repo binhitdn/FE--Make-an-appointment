@@ -81,7 +81,7 @@ function ManageBookingFinish() {
         
         
         {
-                 dataPatient && dataPatient.map((item, index) => {
+                 dataPatient && dataPatient.filter((item) => item.statusID === "S3").map((item, index) => {
                   
                   
                   
@@ -93,64 +93,64 @@ function ManageBookingFinish() {
                  
                   
               
-                        return (
-                            <tr key={index}>
-            <td>{index + 1}</td>
-          <td>
-            <div className='d-flex align-items-center'>
-              <img
-                src={ item.patientData.userData.image ? item.patientData.userData.image : 'https://res.cloudinary.com/dkwojfcv8/image/upload/v1670239396/bmc6u64kd2p3jam6ugiu.png'}
-                alt=''
-                style={{ width: '45px', height: '45px' }}
-                className='rounded-circle'
-              />
-              <div className='ms-3'>
-                <p className='fw-bold mb-1'>
-                {item.patientData.userData.lastName} {item.patientData.userData.firstName}
-                </p>
-                <p className='text-muted mb-0'>
-                {item.patientData.userData.email}
-                </p>
-              </div>
-            </div>
-          </td>
-          <td>
-            <p className='fw-normal mb-1'>
-                {moment(item.date).format("DD-MM-YYYY")} 
+                    return (
+                        <tr key={index}>
+        <td>{index + 1}</td>
+      <td>
+        <div className='d-flex align-items-center'>
+          <img
+            src={ item.patientData.userData.image ? item.patientData.userData.image : 'https://res.cloudinary.com/dkwojfcv8/image/upload/v1670239396/bmc6u64kd2p3jam6ugiu.png'}
+            alt=''
+            style={{ width: '45px', height: '45px' }}
+            className='rounded-circle'
+          />
+          <div className='ms-3'>
+            <p className='fw-bold mb-1'>
+            {item.patientData.userData.lastName} {item.patientData.userData.firstName}
             </p>
             <p className='text-muted mb-0'>
-                {item.timeTypeData2.valueVi}
+            {item.patientData.userData.email}
             </p>
-          </td>
-          <td>
-            <p className='fw-normal mb-1'>
-                {moment(item.updatedAt).format("hh:mm:ss")}
-            </p>
-            <p className='text-muted mb-0'>
-                {moment(item.updatedAt).format("DD-MM-YYYY")}
-            </p>
-          </td>
-          
-          <td>
-          
-                                <button className="btn btn-primary"
-                                    
-                                    onClick={
-                                        () => {
-                                            handleToggleModal(item);
-                                        }
-                                    
+          </div>
+        </div>
+      </td>
+      <td>
+        <p className='fw-normal mb-1'>
+            {moment(item.date).format("DD-MM-YYYY")} 
+        </p>
+        <p className='text-muted mb-0'>
+            {item.timeTypeData2.valueVi}
+        </p>
+      </td>
+      <td>
+        <p className='fw-normal mb-1'>
+            {moment(item.updatedAt).format("hh:mm:ss")}
+        </p>
+        <p className='text-muted mb-0'>
+            {moment(item.updatedAt).format("DD-MM-YYYY")}
+        </p>
+      </td>
+      
+      <td>
+      
+                            <button className="btn btn-primary"
+                                
+                                onClick={
+                                    () => {
+                                        handleToggleModal(item);
                                     }
-                                      
-                                >
-                                    Xem chi tiết
-                                    <i className='fas fa-edit' />
-                                </button>
+                                
+                                }
+                                  
+                            >
+                                Xem chi tiết
+                                <i className='fas fa-edit' />
+                            </button>
 
-          </td>
-        </tr>
-                        )
-                    })
+      </td>
+    </tr>
+                    )
+                })
                 }
 
         

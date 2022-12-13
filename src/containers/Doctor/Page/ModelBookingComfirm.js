@@ -85,7 +85,7 @@ function ModelBookingConfirm(props) {
                 </div >
                 <div className="modal-body">
                     <div>
-                        <div className="info-schedule">
+                        {/* <div className="info-schedule">
                             <div className="info-doctor">
                                 
                             </div>
@@ -99,7 +99,7 @@ function ModelBookingConfirm(props) {
                                 <span> </span>
 
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="form-group">
                         <div className="row">
@@ -192,17 +192,24 @@ function ModelBookingConfirm(props) {
                     <button type="button" className="button btn-exit" data-dismiss="modal"
                     onClick={props.handleToggleModal}
                     >Thoát</button> */}
-                    <input type="button" className="btn btn-primary" value="Khám xong" onClick={()=>{handleComfirmBooking(props.info.id,{
+                    <input type="button" className="btn btn-warning" value="Khám xong" onClick={()=>{handleComfirmBooking(props.info.id,{
                         diagnose: diagnose,
                         medicine: medicine,
                         note: note
-                    })}} />
+                    })}} 
+                    
+                    />
                     
                     <Pdf targetRef={ref} filename="code-example.pdf">
-        {({ toPdf }) => <input type="button" className="btn btn-primary" value="In giấy khám" onClick={toPdf} />}
+        {({ toPdf }) => <input type="button" className="btn btn-primary" value="In giấy khám" onClick={toPdf} 
+        style={{backgroundColor: "green"}}
+        
+        />}
       </Pdf>
       
-                    <input type="button" className="btn btn-primary" value="Hủy" onClick={()=>{props.handleToggleModal()}} />
+                    <input type="button" className="btn btn-primary" value="Hủy" onClick={()=>{props.handleToggleModal()}} 
+                    style={{backgroundColor: "red"}}
+                    />
                     
 
                 </div>
