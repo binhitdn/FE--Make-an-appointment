@@ -52,14 +52,14 @@ const SideBar = () => {
         //     link: "/clinic",
         //     icon: "fa-solid fa-house-chimney-medical"
         // },
-        {
-            id: 6,
-            en: "Community",
-            vi: "Cộng đồng",
-            ja: "コミュニティ",
-            link: "/community",
-            icon: "fa-solid fa-earth-americas"
-        }
+        // {
+        //     id: 6,
+        //     en: "Community",
+        //     vi: "Cộng đồng",
+        //     ja: "コミュニティ",
+        //     link: "/community",
+        //     icon: "fa-solid fa-earth-americas"
+        // }
     ]
 
     return (
