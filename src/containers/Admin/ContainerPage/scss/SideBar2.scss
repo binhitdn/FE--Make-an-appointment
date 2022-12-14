@@ -78,13 +78,13 @@ menu-big {
 }
  
 
-.non_active {
-    background-color: #fff !important;
-    ul {
-        display: none !important;
-    }
+// .non_active {
+//     background-color: #fff !important;
+//     ul {
+//         display: none !important;
+//     }
     
-}
+// }
 .nav-item {
     
     
@@ -127,11 +127,15 @@ menu-big {
 //     border: 0.0625rem solid #4c5680;   
 // }
 .submenu {
-    background-color: rgb(247, 251, 237);
-    margin-left: 25px !important;
+    border-left: 1px solid #92d0ff !important;
+    border-bottom: 1px solid #92d0ff !important;
+    box-shadow: 0 0 5px #92d0ff !important;
+    margin-left: 20px !important;
     border-radius: 5px;
     list-style: none !important;
     li {
+        width: calc(100% - 20px) !important;
+        margin: 0 10px !important;      
         .link-submenu {
             font-size: 12px !important;
             color: #000 !important;

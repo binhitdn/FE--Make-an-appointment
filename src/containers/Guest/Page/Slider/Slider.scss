@@ -196,6 +196,8 @@ html[data-theme="light"]  {
       &-readmore {
         position: relative;
         font-size: 14px;
+        font-weight: 900;
+        color: rgb(219, 217, 217) !important;
         text-transform: lowercase;
         backface-visibility: hidden;
         transform: translateY(-20px);

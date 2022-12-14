@@ -8,9 +8,12 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { handleGetTopDoctorApi } from '../../../../services/doctorService';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthToken } from '../../../../utils/AuthToken';
 function TopDoctor() {
   
   const [doctors, setDoctors] = useState([]);
+  const {lang} = useContext(AuthToken)
 
   let getData = async () => {
     let data = await handleGetTopDoctorApi();
@@ -58,8 +61,13 @@ function TopDoctor() {
 
         <div className="section-doctor-trend">
             <div class="section-specialties-title">
-                <h4>Bác Sĩ Nổi Bật</h4>
-                <a href="#">XEM THÊM</a>
+                <h4>
+                    {lang === "vi" ? "Bác sĩ nổi bật" : lang === "en" ? "Top Doctor" : "優秀な医師" }
+
+                </h4>
+                <a href="#">
+                    {lang === "vi" ? "Xem tất cả" : lang === "en" ? "View all" : "すべて見る" }
+                </a>
             </div>
             <div className="specialty-content">
                 <Slider {...settings}>
@@ -79,8 +87,13 @@ function TopDoctor() {
                                     </div>
     
                                     <div className="name">
-                                        <h6>{ doctor.positionData.valueVi} {doctor.userData.lastName} {doctor.userData.firstName}</h6>
-                                        <p>Chuyên Khoa { doctor.specialtyData.name}</p>
+                                        <h6>{ doctor.positionData[
+                                          
+                                            lang === "vi" ? "valueVi" : lang === "en" ? "valueEn" : ""
+                                          
+                                        ]} {doctor.userData.lastName} {doctor.userData.firstName}</h6>
+                                        <p>{ lang === "vi" ? "Chuyên khoa" : lang === "en" ? "Specialty" : "専門" } 
+                                               { doctor.specialtyData.name}</p>
                                     </div>
                         </Link>
                             )

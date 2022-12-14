@@ -64,3 +64,37 @@
 .t-orange {
     color: #f18c8c !important;
 }
+.doctor-review-doctor {
+    margin-right: 30px;
+    overflow: auto;
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+
+    height: 300px;
+    background-color: #fff;
+    .doctor-review-item {
+        width: 100%;
+        padding: 5px;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        .doctor-review-item-header {
+            .doctor-review-item-name {
+                font-size: 12px;
+                font-weight: 700;
+                color: #000;
+                margin-right: 5px;
+                font-family: 'Roboto', sans-serif;
+                
+            }
+            .doctor-review-item-date {
+                font-size: 10px;
+                font-weight: 700;
+                margin-right: 5px;
+            }
+        }
+    }
+}
+// .doctor-review-doctors::-webkit-scrollbar { 
+//     width: 0 !important;
+//     display: none; 
+//   }

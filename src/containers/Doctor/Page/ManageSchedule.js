@@ -118,7 +118,8 @@ function ManagerSchedule() {
 
     
     return (
-        <div className="manage-doctor-container">
+       <>
+     <div className="manage-doctor-container col-7">
                 <div className="manage-doctor-title">Tạo thêm thông tin bác sĩ</div>
                 <div className="more-info">
                     <div className="content">
@@ -138,8 +139,8 @@ function ManagerSchedule() {
                     /> 
                         </div>
                     </div>
-                    <div className="content-2">
-                        {arrTime && arrTime.map(
+                    {/* <div className="content-2">
+                        {arrTime.slice(0,4) && arrTime.slice(0,4).map(
                             (time, index) => {
                                 return (
                                     <button key={index} value={time.keyMap}
@@ -155,15 +156,87 @@ function ManagerSchedule() {
 
 
                         }
+
                         <div className="button-container">
                     <button className="button-save" 
                         onClick={handleSaveSchedule}
                     >Tạo lịch hẹn</button>
                 </div>
-                    </div>
+                    </div> */}
+                    
                 </div>
+                <div className="schedule">
+                    <div className="schedule-title">Lịch hẹn</div>
+                    <div className="schedule-content">
+                        <div className="schedule-content-morning">
+                            <div className="schedule-content-morning-title">Sáng</div>
+                            {arrTime.slice(0,4) && arrTime.slice(0,4).map(
+                            (time, index) => {
+                                return (
+                                    <button key={index} value={time.keyMap}
+                                        className={time.isSelected === true ? "button-time active" : "button-time"}
+                                        onClick={() => handleClickBtnTime(time)}
+                                    >
+                                        {time.valueVi}
+
+                                    </button>
+                                )
+                            }
+                        )
+
+
+                        }
+                        </div>
+                        <div className="schedule-content-morning">
+                            <div className="schedule-content-morning-title">Chiều</div>
+                            {arrTime.slice(4,8) && arrTime.slice(4,8).map(
+                            (time, index) => {
+                                return (
+                                    <button key={index} value={time.keyMap}
+                                        className={time.isSelected === true ? "button-time active" : "button-time"}
+                                        onClick={() => handleClickBtnTime(time)}
+                                    >
+                                        {time.valueVi}
+
+                                    </button>
+                                )
+                            }
+                        )
+
+
+                        }
+                        </div>
+                        <div className="button-container">
+                    <button className="button-save" 
+                        onClick={handleSaveSchedule}
+                    >Tạo lịch hẹn</button>
+                </div>
+                        
+                    </div> 
+                    </div>
+                        
+                            
                 
             </div>
+            <div
+                className="background-schedule col-5"
+                        style={{
+                            backgroundImage: `url("https://images.squarespace-cdn.com/content/v1/5c702dbd4d8711d477f494d9/1569872550806-R3DBCTKNXN266XGFFYKJ/AdobeStock_260797051.png?format=1500w")`,
+                            backgroundSize: "cover",
+                            backgroundRepeat: "no-repeat",
+                            backgroundPosition: "center",
+                            width: "100%",
+                            height: "100%",
+                            position: "fixed",
+                            top: "0",
+                            right: "0",
+                            zIndex: "-1",
+                            opacity: "0.2"
+                        }}
+
+            >
+            </div>        
+       </>
         
     )
 

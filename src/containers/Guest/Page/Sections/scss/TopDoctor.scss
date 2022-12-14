@@ -49,6 +49,9 @@
             color: rgb(58, 50, 50);
             text-align: center;
             display: block;
+            p {
+                color: var(--color)
+            }
         }
         .specialty {
             font-size: 9px;

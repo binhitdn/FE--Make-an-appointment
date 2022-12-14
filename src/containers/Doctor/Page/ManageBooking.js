@@ -273,6 +273,24 @@ toggleModal={toggleModalDestroy} info={clickPatient} handleToggleModalDestroy={h
 handleToggleModal={handleToggleModal} 
 />
 }
+<div
+                className="background-schedule"
+                        style={{
+                            backgroundImage: `url("https://www.vinmec.com/static/img/image-doctor-qna.dd79fe239b92.png")`,
+                            backgroundSize: "contain",
+                            backgroundRepeat: "no-repeat",
+                            backgroundPosition: "center",
+                            width: "100%",
+                            height: "100%",
+                            position: "fixed",
+                            top: "0",
+                            right: "0",
+                            zIndex: "-1",
+                            opacity: "0.2"
+                        }}
+
+            >
+            </div> 
         </>
     )
 

@@ -51,6 +51,9 @@ html[data-theme="dark"]  {
             width: 90%;
             margin: 0 auto;
             height: 100%;
+            p {
+                color: var(--color)
+            }
 
             div {
                 width: 211px;

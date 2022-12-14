@@ -4,7 +4,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import servicedata from "../../../../data/servicedata";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthToken } from "../../../../utils/AuthToken";
 function Service() {
+  const {lang} = useContext(AuthToken)
     let settings = {
         infinite: true,
         speed: 500,
@@ -51,13 +54,13 @@ function Service() {
                                         <div style={{
                                             background: `url(${item.image})`,
                                         }}>               </div>
-                                             <h4 className="section-specialty-item-name">{ item.name}</h4>
+                                             <h4 className="section-specialty-item-name">{ item.name[lang]}</h4>
                                         <ul>
                                             {/* <li>Tầm soát và xác định COVID-19</li>
                                             <li>Phương pháp Test nhanh </li>
                                             <li>Theo quy chuẩn Bộ Y tế</li> */}
                                                  {
-                                                     item.description && item.description.map((item, index) => {
+                                                     item.description[lang] && item.description[lang].map((item, index) => {
                                                             return (
                                                                 <li key={index}>{item}</li>
                                                             )

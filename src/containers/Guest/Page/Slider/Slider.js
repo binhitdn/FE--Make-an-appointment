@@ -1,7 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
 import './Slider.scss'
+import { AuthToken } from '../../../../utils/AuthToken';
+import { useContext } from 'react';
+
 class Slider extends React.Component {
+  static contextType = AuthToken;
+  
+  
     constructor(props) {
       super(props);
       
@@ -73,6 +79,7 @@ class Slider extends React.Component {
         ],
         lang: localStorage.getItem('language')
         };
+    
       
       
     }
@@ -83,6 +90,7 @@ class Slider extends React.Component {
     }
     
     componentDidMount() {
+      console.log("slider: ",this.context)
       this.runAutochangeTO();
       setTimeout(() => {
         this.setState({ activeSlide: 0, sliderReady: true });
@@ -90,7 +98,7 @@ class Slider extends React.Component {
     }
    
     componentDidUpdate(prevProps, prevState) {
-      if (prevState.lang !== this.state.lang) {
+      if (prevState.lang !== this.context.lang) {
         this.setState({ lang: localStorage.getItem('language') });
       }
     }
@@ -138,7 +146,11 @@ class Slider extends React.Component {
                   <h2 className="slider__slide-heading">
                     {slide.title[this.state.lang].split('').map(l => <span>{l}</span>)}
                   </h2>
-                  <p className="slider__slide-readmore">ĐỌC THÊM</p>
+                  <p className="slider__slide-readmore">
+                    {
+                      this.context.lang === 'vi' ? 'Xem thêm' : this.context.lang === 'en' ? 'Read more' : '詳細を見る'
+                    }
+                  </p>
                 </div>
               </div>
               

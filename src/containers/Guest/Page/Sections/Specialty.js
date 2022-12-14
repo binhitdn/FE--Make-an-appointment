@@ -6,6 +6,8 @@ import { handleGetAllSpecialityApi } from "../../../../services/specialtyService
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthToken } from "../../../../utils/AuthToken";
 
 
 
@@ -13,6 +15,7 @@ import { Link } from "react-router-dom";
 
 function Specialty() {
     const[specialties, setSpecialties] = useState([]);
+    const{lang} = useContext(AuthToken)
 
 
   let getData = async () => {
@@ -63,8 +66,12 @@ function Specialty() {
     return (
         <div className="section-specialties">
                 <div class="section-specialties-title">
-                <h4>Chuyên khoa phổ biến</h4>
-                <a href="#">XEM THÊM</a>
+                <h4>
+                    {lang === "vi" ? "Chuyên khoa phổ biến" : lang=== "en" ? "Popular specialties" : "人気の名物" }
+                </h4>
+                <a href="#">
+                    {lang === "vi" ? "Xem tất cả" : lang=== "en" ? "See all" : "すべてを見る" }
+                </a>
                 </div>
                 <div className="specialty-content">
                 <Slider {...settings}>

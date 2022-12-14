@@ -103,15 +103,19 @@ function Guest() {
                   <Route path="*" element={
                     <Error404Page />
             } />
+            
         </Routes>
                 </div>
-            </div>
+                
+              </div>
             <div className="sidebar-mobile">
               <SideBarMobile 
               isMenuOpenMobile={isMenuOpen}
               handleMenuOpenMobile={handleMenuOpen}
               />
             </div>
+            
+            
               
             
 
@@ -132,7 +136,10 @@ theme="light"
               </div>  
               
               
+              
               </BrowserRouter>  
+              
+              
               
        </Fragment>
 

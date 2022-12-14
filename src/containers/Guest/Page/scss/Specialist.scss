@@ -1,6 +1,9 @@
 .special-page {
     .special-page__header {
         padding: 0 100px;
+        p {
+            color: var(--color);
+        }
         @media screen and (max-width: 820px) {
             padding: 0 20px;
         }
@@ -140,6 +143,7 @@
     
                 }
                 .div-special-name {
+                    color: var(--color);
 
                 }
             }

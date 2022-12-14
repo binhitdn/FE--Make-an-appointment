@@ -184,6 +184,24 @@ function Statistical(){
             
 
             </div>
+            <div
+                className="background-schedule"
+                        style={{
+                            backgroundImage: `url("https://images.squarespace-cdn.com/content/v1/5c702dbd4d8711d477f494d9/1569871998046-CJH4FH2GKDTTZ95M3IK1/AdobeStock_198920008+%5BConverted%5D.png?format=2500w")`,
+                            backgroundSize: "cover",
+                            backgroundRepeat: "no-repeat",
+                            backgroundPosition: "center",
+                            width: "100%",
+                            height: "100%",
+                            position: "fixed",
+                            top: "0",
+                            right: "0",
+                            zIndex: "-1",
+                            opacity: "0.2"
+                        }}
+
+            >
+            </div> 
         </div>
     )
 }

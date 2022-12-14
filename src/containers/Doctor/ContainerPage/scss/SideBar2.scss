@@ -3,7 +3,7 @@ menu-big {
 }
 .sidebar {
     
-    border-right: 1px solid #e5e5e5;
+    border-right: 6px double #787ffe;
     height: 100vh;
     min-width: 260px;
     padding: 0 20px;
@@ -39,16 +39,19 @@ menu-big {
                     padding: 0 20px;
                     span {
                         color: rgb(90, 90, 90);
+                        font-size: 15px;
+                        font-weight: 500;
                     }
                     .fa {
-                        min-width: 30px;
-                        color: rgb(90, 90, 90) !important;
+                        min-width: 15px;
+                        
                     }
                     ul {
                         list-style: none;
                         padding: 0;
                         width: 100%;
                         display: none;
+                        border-left: 1px solid #0091ff !important;
                         li {
                            display: block;
                             width: 100%;
@@ -97,9 +100,32 @@ menu-big {
     
 }
 .nav-item {
+    li {
+        a {
+            border-radius: 10px;
+        }
+        border-radius: 10px;
+    }
+    a{
+        border-radius: 10px !important;
+    }
+    .collapsed {
+        .icon-collapsed {
+               i::before {
+                transform: rotate(180deg);
+
+               }
+            }
+    }
     
     
-    
+}
+.icon-sidebar-collapsed {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    color: #000;
+
 }
 .nav-item-2 {
     margin-left: 30px !important;
@@ -123,10 +149,10 @@ menu-big {
 
 }
 .icon-sidebar-menu {
-    color: #fff !important;
+    color: rgb(0, 0, 0) !important;
     font-size: 15px !important;
     display: inline-block;
-    width: 15px !important;
+    width: 20px !important;
     min-width: 30px !important;
 
     
@@ -134,7 +160,7 @@ menu-big {
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     
     color: #242527;
-    background-color: #f9ffef;
+    background-color: #a0ceff;
     border: 0.0625rem solid #d7e7f9;   
 }
 

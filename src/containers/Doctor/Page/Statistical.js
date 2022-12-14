@@ -9,6 +9,9 @@ import StatisticalTable from "./StatisticalTable";
 import moment from "moment/moment";
 import { handleGetDoctorByIdApi, handleGetReviewByDoctorIdApi } from "../../../services/doctorService";
 import BookingAboutToExpire from "./BookingAboutToExpire";
+import NotData from "../../../components/NotData";
+import { Scrollbars } from 'react-custom-scrollbars';
+
 
 function Statistical(){
     const [allBooking, setAllBooking] = useState(0);
@@ -70,7 +73,8 @@ function Statistical(){
         getData();
     },[])
     return (
-        <div className="statistical">
+        <>
+            <div className="statistical">
             <div className="statistical__header">
                 <h1>Thống Kê</h1>
             </div>
@@ -138,13 +142,13 @@ function Statistical(){
             <div className="statistical__footer">
                 <div className="statistical__footer__header">
                 <nav>
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+  {/* <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Lịch hẹn hôm nay</button>
     <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Lịch hẹn sắp hết hạn</button>
     <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Đánh giá gần đây</button>
-  </div>
+  </div> */}
 </nav>
-<div class="tab-content" id="nav-tabContent">
+{/* <div class="tab-content" id="nav-tabContent">
   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
         <div className="row">
             <div className="col-6">
@@ -222,13 +226,115 @@ function Statistical(){
                             }
 
   </div>
-</div>
+</div> */}
+        <div className="row">
+            <div className="col-6">
+                <b>Lịch hẹn hôm nay</b>
+            {/* <StatisticalTable  bookingToday={bookingToday}/> */}
+            <NotData data="Hôm nay không có lịch hẹn nào" />
+
+            
+             </div>
+            <div className="col-5">
+                <b>Đánh giá gần đây của khách hàng</b>
+                {/* <Scrollbars 
+               
+                // autoHide
+                // autoHideTimeout={1000}
+                // autoHideDuration={200}
+                autoHeight
+                autoHeightMin={0}
+                autoHeightMax={200}
+                // thumbMinSize={30}
+                // universal={true}
+                > */}
+                <div className="doctor-review-doctor">
+                {
+                review.map((item, index) => {
+                                    return (
+                                        <div className="doctor-review-item">
+                                <div className="doctor-review-item-header">
+                                    <div className="doctor-review-item-avatar"
+                                    style={{backgroundImage: `url(${item.bookingData.patientData.userData.image})`}}
+                                    >
+                                        
+                                    </div>
+                                    <div className="doctor-review-item-name">
+                                        {item.bookingData.patientData.userData.lastName} {item.bookingData.patientData.userData.firstName}
+                                    </div>
+                                    <div className="doctor-review-item-date">
+                                        <i className="far fa-clock"></i> 
+                                        KN: {moment(item.bookingData.date).format("DD/MM/YYYY")}
+                                    </div>
+                                    <div className="doctor-review-item-rating">
+                                <i class={
+                                        item.rate >= 1 ? "fa-solid fa-star icon-rating" : "fa-regular fa-star icon-rating"
+                                  }
+                                  
+                                  ></i>
+                                    <i class={
+                                        item.rate >= 2 ? "fa-solid fa-star icon-rating" : "fa-regular fa-star icon-rating"
+                                    }
+                                    ></i>
+                                    <i class={
+                                        item.rate >= 3 ? "fa-solid fa-star icon-rating" : "fa-regular fa-star icon-rating"
+                                    }
+                                    ></i>
+                                    <i class={
+                                        item.rate >= 4 ? "fa-solid fa-star icon-rating" : "fa-regular fa-star icon-rating"
+                                    }
+                                    ></i>
+                                    <i class={
+                                        item.rate >= 5 ? "fa-solid fa-star icon-rating" : "fa-regular fa-star icon-rating"
+                                    }
+                                    ></i>
+                                    </div>
+                                
+                                   
+                                </div>
+                                <div className="doctor-review-item-content">
+                                    <div className="doctor-review-item-content-review">
+                                        {item.review}
+                                    </div>
+                                </div>
+                                
+                            </div>
+                                    )
+                                }
+                                )
+
+                            }
+                </div>
+      {/* </Scrollbars> */}
+                
+            </div>
+
+        </div>
                     
                     
                     
                 </div>
             </div>
         </div>
+        <div
+                className="background-schedule"
+                        style={{
+                            backgroundImage: `url("https://images.squarespace-cdn.com/content/v1/5c702dbd4d8711d477f494d9/1569871998046-CJH4FH2GKDTTZ95M3IK1/AdobeStock_198920008+%5BConverted%5D.png?format=2500w")`,
+                            backgroundSize: "cover",
+                            backgroundRepeat: "no-repeat",
+                            backgroundPosition: "center",
+                            width: "100%",
+                            height: "100%",
+                            position: "fixed",
+                            top: "0",
+                            right: "0",
+                            zIndex: "-1",
+                            opacity: "0.2"
+                        }}
+
+            >
+            </div> 
+        </>
     )
 }
 export default Statistical;

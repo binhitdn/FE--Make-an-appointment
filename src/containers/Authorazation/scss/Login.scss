@@ -15,6 +15,7 @@
     display: flex !important;
     justify-content: space-between;
     align-items: center;
+    overflow: hidden;
 
 
     
@@ -30,12 +31,15 @@
     h1 {
         margin: 0;
         font-weight: 800;
-        color: rgb(242, 255, 0);
-        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-
-        
+        color: rgb(191, 200, 16);
+        font-size: 50px;   
     }
     h2 {
+        margin: 0;
+        font-weight: 800;
+        color: rgb(0, 0, 0);
+        font-size: 30px;
+        letter-spacing: 1.5px;
         
 
     }

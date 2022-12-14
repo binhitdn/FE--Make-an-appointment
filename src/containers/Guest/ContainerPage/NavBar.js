@@ -27,6 +27,7 @@ function NavBar(props) {
     const [specialityResult, setSpecialityResult] = useState([]);
     const [doctorResult, setDoctorResult] = useState([]);
     const [handBookResult, setHandBookResult] = useState([]);
+    const [boxNoti, setBoxNoti] = useState(false);
 
 
 
@@ -408,14 +409,22 @@ function NavBar(props) {
                         </div>
                         <div className="right-content">
                         <div className="notification">
-                                <i className="fa fa-bell notification-icon">
+                                <i className="fa fa-bell notification-icon
+                                
+                                " onClick={() => {
+                                    setBoxNoti(!boxNoti)
+                                }}>
                                     {
                                         handleAuth().id && <div className="notification-number">
                                         4
                                     </div>
                                     }
                                 </i>
-                                <div className="notification-content">
+                                <div className="notification-content"
+                                style={{
+                                    display: boxNoti ? "block" : "none"
+                                }}
+                                >
                                     <div className="notification-content-header">
                                         <div className="notification-content-header-title">
                                             Thông báo
@@ -490,7 +499,16 @@ function NavBar(props) {
                                 style={{display: "flex", alignItems: "center"}}
                                 >
                                 
-                                <span className="user-name">  Xin chào 
+                                <span className="user-name">  
+                                {
+                                    lang == "vi" && "Xin chào"
+                                }
+                                {
+                                    lang == "en" && "Hello"
+                                }
+                                {
+                                    lang == "ja" && "こんにちは"
+                                }
                                 {/* <b>{handleAuth().email}</b> */}
                                 </span>
                                 <div className="avatar"

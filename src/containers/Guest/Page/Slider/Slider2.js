@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import './Slider.scss'
+import { useEffect } from 'react';
 function Slider2(props) {
     this.IMAGE_PARTS = 4;
       
@@ -129,6 +130,8 @@ function Slider2(props) {
         }
       ]
     );
+    
+
         
 
 
