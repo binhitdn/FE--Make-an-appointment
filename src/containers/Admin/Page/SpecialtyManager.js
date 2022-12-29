@@ -20,7 +20,6 @@ function SpecialtyManager() {
     const [contentMarkdown, setContentMarkdown] = useState('');
     const [contentHTML, setContentHTML] = useState('');
     const [isOpen, setIsOpen] = useState(false);
-    const [description, setDescription] = useState('');
     const [loading, setLoading] = useState(false);
 
 // Finish!
@@ -36,7 +35,7 @@ let handleSaveSpeciality = async() => {
             contentHTML: contentHTML,
             contentMarkdown: contentMarkdown,
             avatar: avatar,
-            description: description
+            
         })
         console.log('res: ', res);
         toast.success('Tạo chuyên khoa thành công');
@@ -45,7 +44,7 @@ let handleSaveSpeciality = async() => {
         setAvatarPreview('');
         setContentMarkdown('');
         setContentHTML('');
-        setDescription('');
+        
         
     }
    
@@ -66,10 +65,7 @@ let validate = () => {
     } else if(contentHTML === '') {
         toast.error("Nội dung không được để trống");
         return false;
-    } else if (description === '') {
-        toast.error("Mô tả không được để trống");
-        return false;
-    }
+    } 
     return true;
 }
 let handleChangeInput = (e) => {
@@ -86,9 +82,7 @@ let handleChangeInput = (e) => {
         setAvatarPreview(value);
     } else if (name === 'isOpen') {
         setIsOpen(value);
-    } else if (name === 'description') {
-        setDescription(value);
-    }
+    } 
 }
 let handleFileUpload = async(e) => {
     let uploadData = new FormData();
@@ -131,6 +125,9 @@ let handleFileUpload = async(e) => {
                         <input
               type="file"
               onChange={(e) => handleFileUpload(e)}
+                className="form-control"  
+                
+                
             />
                                 {/* <div className="upload"><label htmlFor="up-photo" className="upload-text"> <i className="fa-solid fa-arrow-up-from-bracket icon-upload"></i> Tải Ảnh</label></div> */}
                                 <div className="preview-image"
@@ -146,10 +143,7 @@ let handleFileUpload = async(e) => {
                 </div>
                 <div className="row">
                     <div className="col-6">
-                    <label>Mô tả</label>
-                    <textarea className="form-control" rows="6" onChange={(e)=>{handleChangeInput(e)}} name="description"
-                    value={description}>
-                    ></textarea>
+                    
                     </div>
                 <div  className="col-6">
                     <label>Xem trước ảnh</label>

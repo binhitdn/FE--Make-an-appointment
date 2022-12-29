@@ -10,6 +10,7 @@
     background-color: rgba(0,0,0,.3);
     animation: appearMenu duration timing-function delay iteration-count direction fill-mode;
     
+    
   
     
     .mobile-overlay-menu__body {
@@ -18,11 +19,15 @@
       left: 0;
       position: absolute;
       top: 0;
-      width: 80%;
+      width: 75%;
+     
+      background-color: #fbffdf;
+
       .mobile-overlay-menu__header {
         display: flex;
         justify-content: space-between;
         padding: 5px 10px;
+        
         .mobile-overlay-menu__title {
 
         }
@@ -53,37 +58,78 @@
       }
       .mobile-overlay-menu__content {
         .mobile-overlay-menu__login {
-          padding: 16px;
+         
+          padding: 12px;
+          display: inline-block;
+          text-align: center;
+          border-radius: 10px;
+          background-color: #f3ff6c;
+          text-decoration: none;
+          
+          
+          .mobile-overlay-menu__login-title {
+             i {
+
+             }
+             span {
+
+             }
+          }
 
         }
         .mobile-overlay-menu__users {
+          
+          padding: 0 20px;
+          .mobile-overlay-menu__profile-info {
+            
+            align-items: center;
+            
+            display: flex;
             .mobile-overlay-menu__profile-avatar {
-                border-radius: 50%;
-                width: 90px;
-                height: 90px;
-                
-            }
-            .mobile-overlay-menu__profile-name {
-                span {
-                    font-weight: 700;
-                margin-top: 10px;
-                }
+             
+              border-radius: 50%;
+              width: 60px;
+              height: 60px;
+              
 
-            }
+              
+          }
+          .mobile-overlay-menu__profile-name {
+            margin-left: 10px;
+              span {
+                  font-weight: 700;
+              margin-top: 10px;
+              font-size: 14px;
+              }
+              b {
+                font-weight: 400;
+                font-size: 13px;
+              }
+
+          }
+          }
+           
         }
         .mobile-overlay-menu__list {
+          margin-top: 20px;
           .mobile-overlay-menu__list-item {
-            padding: 16px;
-            font-size: 16px;
-            font-weight: 600;
-            letter-spacing: 1px;
+            padding: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            
             display: block;
             text-decoration: none;
+            border-radius: 20px;
             .mobile-overlay-menu__list-item-title {
+              display: flex;
+              align-items: center;
+              
               
               .mobile-overlay-menu__list-item-logo {
-                width: 30px;
-                height: 30px;
+               min-height: 20px;
+               max-height: 20px;
+                min-width: 20px;
+               
                 margin-right: 10px;
               }
             }
@@ -102,4 +148,9 @@
         transform: translateX(0);
     }
   
+}
+hr {
+    margin: 5px 10px;
+    
+    
 }

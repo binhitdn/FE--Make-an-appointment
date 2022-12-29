@@ -8,17 +8,21 @@ import "./scss/ModelBookingNew.scss";
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { getUserByIdApi } from '../../../services/userService';
-import { handleChangeStatusBookingApi, handleComfirmBookingApi } from '../../../services/bookingService';
+import { handleChangeStatusBookingApi, handleComfirmBookingApi, handleGetBookingCancelledApi } from '../../../services/bookingService';
 import { toast } from 'react-toastify';
 function ModalBookingCancelled(props) {
     const [idPatient, setIdPatient] = useState(handleAuth().id);
     const [infoPatient, setInfoPatient] = useState({});
+    const [reason, setReason] = useState("");
 
     let getDataUser = async () => {
         let data = await getUserByIdApi(idPatient);
         setInfoPatient(data.users);
         console.log("A",props.info);
-        
+        let a = await handleGetBookingCancelledApi(props.info.id);
+        console.log("A",a);
+        setReason(a.reason);
+
     }
     useEffect(() => {
         getDataUser();
@@ -68,10 +72,11 @@ function ModalBookingCancelled(props) {
                                 </div>
                             </div>
                             <div className="col-6">
-                                <div className="input-icon">
-                                    <i class="fa-regular fa-calendar input-icon-icon"></i>
-                                    <p>Ngày sinh: 01/01/1999</p>
-                                </div>
+                            <div className="input-icon">
+
+<i class="fa-light fa-square-user input-icon-icon"></i>
+<p>Giới tính: {props.info.patientData.userData.gender}</p>
+</div>
                             </div>
                         </div>
                         <div className="row">
@@ -92,25 +97,21 @@ function ModalBookingCancelled(props) {
                         </div>
                         <div className="row">
 
-                            <div className="col-6">
+                            <div className="col-12">
                                 <div className="input-icon">
                                     <i class="fa-sharp fa-solid fa-location-dot input-icon-icon"></i>
                                     <p>Địa chỉ: {props.info.patientData.userData.address}</p>
                                 </div>
                             </div>
-                            <div className="col-6">
-                                <div className="input-icon">
-
-                                    <i class="fa-light fa-square-user input-icon-icon"></i>
-                                    <p>Giới tính: {props.info.patientData.userData.gender}</p>
-                                </div>
-                            </div>
+                            
                         </div>
                         <div className="row">
                             <div className="col-12">
                                 <div className="input-icon">
                                     <i class="fa-solid fa-circle-envelope input-icon-icon"></i>
-                                    <p>ko biết </p>
+                                    <p>
+                                        Lý do hủy: {reason}
+                                    </p>
                                 </div>
                             </div>
 
@@ -123,8 +124,7 @@ function ModalBookingCancelled(props) {
                     <button type="button" className="button btn-exit" data-dismiss="modal"
                     onClick={props.handleToggleModal}
                     >Thoát</button> */}
-                    <input type="button" className="btn btn-primary" value="Khám xong" onClick={()=>{handleComfirmBooking(props.info.id)}} />
-                    <input type="button" className="btn btn-primary" value="In giấy khám" onClick={()=>{props.handleToggleModal()}} />
+                   
                     <input type="button" className="btn btn-primary" value="Hủy" onClick={()=>{props.handleToggleModal()}} />
                     
 

@@ -3,6 +3,9 @@ import axios from "../axios";
 const handCreateHandbook = (data) => {
     return axios.post('/api/add-new-handbook', data)
 }
+const handleEditHandbook = (data) => {
+    return axios.post('/api/edit-handbook', data)
+}
 const handGetAllHandbook = () => {
     return axios.get('/api/get-all-handbook')
 }
@@ -26,4 +29,4 @@ const handleAddReplyCommentHandbook = (data) => {
     return axios.post('/api/add-reply-comment-in-handbook', data)
 }
 
-export { handCreateHandbook, handGetAllHandbook,handGetHandbookById ,handUpdateViewHandbook,handleAddCommentHandbook,handGetAllCommentHandbook,handGetAllReplyCommentHandbook,handleAddReplyCommentHandbook}
+export { handCreateHandbook, handGetAllHandbook,handGetHandbookById ,handUpdateViewHandbook,handleAddCommentHandbook,handGetAllCommentHandbook,handGetAllReplyCommentHandbook,handleAddReplyCommentHandbook,handleEditHandbook}

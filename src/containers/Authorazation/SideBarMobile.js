@@ -26,11 +26,11 @@ function SideBarMobile(props) {
                       <div className="mobile-overlay-menu__title-logo"
                       style={{
                         backgroundImage: `url("http://localhost:3001/static/media/logo.56a267c3eb83014211bd.png")`,
-                        backgroundSize: 'cover',
+                        backgroundSize: 'contain',
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
                         width: '100px',
-                        height: '100px',
+                        height: '50px',
                       }}
                       >
                         
@@ -46,7 +46,7 @@ function SideBarMobile(props) {
                   <div className="mobile-overlay-menu__content">
                     {
                       !handleAuth().id &&
-                      <Link className="btn btn-warning"
+                      <Link className="btn btn-warning mobile-overlay-menu__login"
                       to="/login"
                       
                       onClick={props.handleMenuOpenMobile}
@@ -68,6 +68,7 @@ function SideBarMobile(props) {
                       handleAuth().id && 
                       <div className="mobile-overlay-menu__users">
                       <div className="mobile-overlay-menu__profile">
+                        <div className="mobile-overlay-menu__profile-info">
                         <div className="mobile-overlay-menu__profile-avatar"
                         style={{
                           backgroundImage: `url(${account.image})`,
@@ -79,7 +80,9 @@ function SideBarMobile(props) {
                         >
                         </div>
                         <div className="mobile-overlay-menu__profile-name">
-                          <span>{account.lastName + " " + account.firstName}</span>
+                          <span>Xin chào: {account.lastName + " " + account.firstName}</span><br></br>
+                          <b>{account.email}</b>
+                        </div>
                         </div>
                         <div className="mobile-overlay-menu__list">
                         <NavLink className="mobile-overlay-menu__list-item"
@@ -124,7 +127,7 @@ function SideBarMobile(props) {
                       
                       >
                         <div className="mobile-overlay-menu__list-item-title">
-                          <i class="fa-solid fa-right-to-bracket mobile-overlay-menu__list-item-logo"></i>
+                         <i class="fa-solid fa-home mobile-overlay-menu__list-item-logo"></i>
                           <span>Trang chủ</span>
                         </div>   
                       </NavLink>

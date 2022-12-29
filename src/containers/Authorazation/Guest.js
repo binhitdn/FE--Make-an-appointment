@@ -35,7 +35,7 @@ function Guest() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   useEffect(() => {
-    console.log("Tao nef");
+   
       setLoading(!loading);
   }, []);
   let handleMenuOpen = () => {

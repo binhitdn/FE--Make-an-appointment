@@ -41,36 +41,7 @@ function NavBar(props) {
     
 
     
-    // useEffect(() => {
-    //     try {
-    //         setEmail(handleAuth().email);
-    //         setRoleId(handleAuth().roleId);
-    //         setAvatar(handleAuth().avatar);
-    //         getUser()
-            
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }, [author]);
-    // useEffect(() => {
-    //     try {
-    //         setEmail(handleAuth().email);
-    //         setRoleId(handleAuth().roleId);
-    //         setAvatar(account.avatar);
-    //         getUser()
-            
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }, [author]);
-    // let getUser = async() => {
-    //     if(handleAuth().email){
-    //     setAvatar(account.image);
-    //     setFirstName(account.firstName);
-    //     setLastName(account.lastName);
-    //     }
 
-    // }
     let getDataSearch = () => {
        
         if (search) {
@@ -91,9 +62,7 @@ function NavBar(props) {
             setSpecialityResult(specialityResult.length > 3 ? specialityResult.slice(0, 3) : specialityResult);
             setDoctorResult(doctorResult.length > 3 ? doctorResult.slice(0, 3) : doctorResult);
             setHandBookResult(handBookResult.length > 3 ? handBookResult.slice(0, 3) : handBookResult);
-            console.log("specialityResult: ", specialityResult);
-            console.log("doctorResult: ", doctorResult);
-            console.log("handBookResult: ", handBookResult);
+         
         }
     }
     useEffect(() => {
@@ -164,7 +133,7 @@ function NavBar(props) {
         
     }
     useEffect(() => {
-        console.log("account: ", account);
+       
     }, [account]);
     let handleMenuOpenMobile = () => {
         props.handleMenuOpenMobile();
@@ -404,7 +373,9 @@ function NavBar(props) {
                             </div>
                             }
                             </div>
+                            <div className="toggle-mode">
                             <ToggleMode/>
+                            </div>
 
                         </div>
                         <div className="right-content">
@@ -431,7 +402,7 @@ function NavBar(props) {
                                         </div>
                                     </div>
 
-                                    <div className="notification-item">
+                                    {/* <div className="notification-item">
                                         <div className="notification-item-content">
                                             <div className="notification-item-content-left">
                                                 <div className="notification-item-content-left-avatar"
@@ -455,7 +426,7 @@ function NavBar(props) {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
 
@@ -466,7 +437,9 @@ function NavBar(props) {
                             {/* <p className="lang-vi lang active">VN</p>
                             <p className="lang-en lang" >EN</p>
                         <p className="lang-jp lang" >日本語</p> */}
+                        <div className="lang-switch">
                         <SwitchLanguage />
+                        </div>
 
                         {/* <ToggleMode/> */}
                         

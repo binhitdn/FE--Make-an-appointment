@@ -42,7 +42,7 @@
         
     }
     .list-doctor-by-speciality {
-        background: #ffffff;
+        background: var(--background-color);
         .list-doctor-by-speciality-child {
             margin: 0 auto;
             width: 80%;
@@ -54,6 +54,7 @@
                 margin: 30px;
                 padding: 8px;
                 border: 1px solid #ccc;
+                background: var(--background-color);
             }
             .doctors-by-speciality {
                 .doctor-by-speciality {

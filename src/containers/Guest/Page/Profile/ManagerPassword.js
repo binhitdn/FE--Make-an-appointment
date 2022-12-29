@@ -1,33 +1,22 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import { handleAuth } from "../../../../Auth";
-import { getUserByIdApi } from "../../../../services/userService";
+import { changePasswordApi, getUserByIdApi } from "../../../../services/userService";
 
 
 
 function ManagerPassword() {
-    const [firstName,setFirstName] = useState("");
-    const [lastName,setLastName] = useState("");
-    const [email,setEmail] = useState("");
-    const [phone,setPhone] = useState("");
-    const [address,setAddress] = useState("");
-    const [gender,setGender] = useState("");
     const [password,setPassword] = useState("");
     const [confirmPassword,setConfirmPassword] = useState("");
     const [oldPassword,setOldPassword] = useState("");
 
-    let handleGetUserDetails = async() => {
-        let response = await getUserByIdApi(handleAuth().id);
-        console.log(response.users);
-        setFirstName(response.users.firstName);
-        setLastName(response.users.lastName);
-        setEmail(response.users.email);
-        setPhone(response.users.phone);
-        setAddress(response.users.address);
-    }
-    useEffect(() => {
-        handleGetUserDetails();
-    },[])
+    // let handleGetUserDetails = async() => {
+        
+    // }
+    // useEffect(() => {
+    //     handleGetUserDetails();
+    // },[])
 
 
 
@@ -35,22 +24,7 @@ function ManagerPassword() {
         let name = e.target.name;
         let value = e.target.value;
         switch(name){
-            case "firstName":
-                setFirstName(value);
-                break;
-            case "lastName":
-                setLastName(value);
-                break;
-            case "email":
-                setEmail(value);
-                break;
-            case "phone":
-                setPhone(value);
-                break;
-            case "address":
-                setAddress(value);
-                break;
-            case "password":
+            case "newPassword":
                 setPassword(value);
                 break;
             case "confirmPassword":
@@ -61,6 +35,49 @@ function ManagerPassword() {
                 break;
             default:
                 break;
+        }
+    }
+    let validatePassword = () => {
+        if(!oldPassword) {
+            toast.error("Mật khẩu cũ không được để trống");
+        }
+        if(!confirmPassword) {
+            toast.error("Xác nhận mật khẩu không được để trống");
+        }
+        
+        if(password) {
+            if(password.length < 6) {
+                toast.error("Mật khẩu phải có ít nhất 6 ký tự");
+                return false;
+            } else if(password.length > 32) {
+                toast.error("Mật khẩu không được quá 32 ký tự");
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            toast.error("Mật khẩu không được để trống");
+            return false;
+        }
+        
+        
+          
+            
+    }
+    let handleEditPassword = async(e) => {
+        e.preventDefault();
+        if(!validatePassword()) return;
+        if(password !== confirmPassword){
+            toast.error("Mật khẩu không khớp");
+        }
+        else{
+            let data = {
+                oldPassword: oldPassword,
+                newPassword: password,
+                id: handleAuth().id
+            }
+            let response = await changePasswordApi(data);
+            console.log(response);
         }
     }
         
@@ -93,7 +110,9 @@ function ManagerPassword() {
             </div>
             <div className="row">
                 <div className="col-5">
-                <input type="submit" className="btn btn-warning" value="Thay đổi mật khẩu" /> 
+                <input type="submit" className="btn btn-warning" value="Thay đổi mật khẩu" 
+                onClick={handleEditPassword}
+                /> 
                 </div>
             </div>  
         </div>

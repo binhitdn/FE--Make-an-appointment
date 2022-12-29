@@ -1,28 +1,38 @@
 import MarkdownIt from "markdown-it";
 import "./scss/ManageHandBook.scss"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MdEditor from 'react-markdown-editor-lite';
 // import style manually
 import 'react-markdown-editor-lite/lib/index.css';
 import CommonUtils from '../../../utils/CommonUtils';
-import { handCreateHandbook } from "../../../services/handbookService";
+import { handCreateHandbook, handGetAllHandbook, handleEditHandbook } from "../../../services/handbookService";
 import { toast } from "react-toastify";
 import axios from "../../../axios";
 import ModalLoading from "../../../components/ModalLoading";
+import Select from 'react-select';
 
-function  HandBook() {
+function  ManageHandBookEdit() {
     const [title, setTitle] = useState("");
     const [photo, setPhoto] = useState("");
     const [photoPreView, setPhotoPreView] = useState("");
     const [description, setDescription] = useState("");
     const [contentHTML, setContentHTML] = useState("");
     const [contentMarkdown, setContentMarkdown] = useState("");
+    const[handbooks,setHandbooks]=useState([]);
+    const[handbookSelected,setHandbookSelected]=useState(null);
     const[loading,setLoading]=useState(false);
     const mdParser = new MarkdownIt(/* Markdown-it options */);
     function handleEditorChange({ html, text }) {
         setContentHTML(html);
         setContentMarkdown(text);
     }
+    useEffect(() => {
+       (async () => {
+        let fetchData = await handGetAllHandbook();
+       
+        setHandbooks(fetchData.data);
+         })()
+    },[])
     let handleChangeInput = (e) => {
         let target = e.target;
         let name = target.name;
@@ -41,21 +51,16 @@ function  HandBook() {
     let handleSave = async () => {
         if(validate()){
             let data ={
-                title: title,
+                id: handbookSelected,
                 description: description,
                 photo: photo,
                 contentMarkdown: contentMarkdown,
                 contentHTML: contentHTML,
                 image: photo
             }
-            let result = await handCreateHandbook(data);
-            toast.success("Thêm mới thành công");
-            setTitle("");
-            setDescription("");
-            setPhoto("");
-            setContentHTML("");
-            setContentMarkdown("");
-            setPhoto("");
+            let fetchData = await handleEditHandbook(data);
+            toast.success("Sửa thành công");
+            
             
         }
     }
@@ -78,6 +83,7 @@ function  HandBook() {
         }
         return true;
     }
+    
     let handleFileUpload = async(e) => {
         let uploadData = new FormData();
         uploadData.append("file", e.target.files[0], "file");
@@ -101,6 +107,14 @@ function  HandBook() {
         })
     
       }
+      let handBookSelected = (id) => {
+        let handbook = handbooks.find((handbook) => handbook.id === id);
+        setTitle(handbook.title);
+        setDescription(handbook.description);
+        setPhoto(handbook.image);
+        setContentHTML(handbook.contentHTML);
+        setContentMarkdown(handbook.contentMarkdown);
+        }
     return (
        <div className="manage-handbook">
         
@@ -111,9 +125,20 @@ function  HandBook() {
             <div className="row">
                 <div className="col-6">
                     <label>Tên Bài Viết</label>
-                    <input type="text" name="title" value={title} onChange={handleChangeInput} 
-                    className="form-control" placeholder="Nhập tên bài viết"
-                    />
+                    <Select options={
+                        handbooks.map((handbook) => {
+                            return {
+                                value: handbook.id,
+                                label: handbook.title
+
+                            }
+                        })
+                    } onChange={(e) => {
+                        console.log(e);
+                        setHandbookSelected(e.value);
+                        handBookSelected(e.value);
+                    }  }/>
+
                     
                 </div>
                 <div className="col-6">
@@ -168,4 +193,4 @@ function  HandBook() {
        </div>
     );
 }
-export default HandBook;
+export default ManageHandBookEdit;

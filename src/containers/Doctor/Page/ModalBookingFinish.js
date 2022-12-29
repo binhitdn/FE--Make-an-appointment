@@ -72,8 +72,9 @@ function ModalBookingFinish(props) {
                             </div>
                             <div className="col-6">
                                 <div className="input-icon">
-                                    <i class="fa-regular fa-calendar input-icon-icon"></i>
-                                    <p>Ngày sinh: 01/01/1999</p>
+
+                                    <i class="fa-light fa-square-user input-icon-icon"></i>
+                                    <p>Giới tính: {props.info.patientData.userData.gender}</p>
                                 </div>
                             </div>
                         </div>
@@ -101,19 +102,16 @@ function ModalBookingFinish(props) {
                                     <p>Địa chỉ: {props.info.patientData.userData.address}</p>
                                 </div>
                             </div>
-                            <div className="col-6">
-                                <div className="input-icon">
-
-                                    <i class="fa-light fa-square-user input-icon-icon"></i>
-                                    <p>Giới tính: {props.info.patientData.userData.gender}</p>
-                                </div>
-                            </div>
+                            
                         </div>
                         <div className="row">
                             <div className="col-12">
                                 <div className="input-icon">
                                     <i class="fa-solid fa-circle-envelope input-icon-icon"></i>
-                                    <p>ko biết </p>
+                                    <p>Lí do khám:
+                                        {
+                                            props.info.reason
+                                        } </p>
                                 </div>
                             </div>
 
@@ -122,13 +120,18 @@ function ModalBookingFinish(props) {
                             <div className="col-12">
                                 <div className="input-icon">
                                     <i class="fa-solid fa-circle-envelope input-icon-icon"></i>
-                                    <p>ko biết </p>
+                                    <p>Chuẩn đoán: 
+                                        {
+                                            props.info.diagnosis
+                                        }
+                                         </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" onClick={props.handleToggleModal}>Hủy</button>
                     
                    
                     

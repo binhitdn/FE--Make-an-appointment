@@ -66,23 +66,80 @@ function BookingModel(props) {
                 <div className="modal-body">
                     <div>
                         <div className="info-schedule">
-                            <div className="info-doctor">
-                                Xác nhận đặt lịch khám với Bác Sĩ &nbsp;
+                            <div className="info-doctor"
+                            style={{display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+
+                            }}
+                            >
+                                <div className="info-doctor-left">
+                                <div className="info-doctor-img"
+                                style={{backgroundImage: `url(${props.doctorAvatar})`,
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                            backgroundRepeat: "no-repeat",
+                            width: "100px",
+                            height: "100px",
+                            borderRadius: "50%",
+                            overflow: "hidden",
+                            position: "relative",
+                            display: "inline-block",
+                            flexShrink: "0",
+                            backgroundClip: "content-box",
+                            border: "1px solid #e9ecef",
+                            padding: "2px",
+                            boxSizing: "border-box",
+                            boxShadow: "0 0 0 1px rgba(0,0,0,.125)",
+    }}
+                            
+                                >
+
+
+                                </div>
+                                <div className="info-doctor-name"
+                                style={{
+                            fontSize: "18px",
+                            fontWeight: "800",
+                            lineHeight: "1.5",
+
+                            }}
+                                >
+                                {/* {props.doctorPosition.valueVi} - */}
                                 {props.doctorName}
+                                </div>
+                                <div className="info-doctor">
+
+                                Xác nhận đặt lịch khám  
+                                
                             </div>
+                                </div>
+                            <div
+                            className="info-doctor-right"
+                            style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            }}
+                            >
+                            
                             <div className="info-extra">
+                                
                                 <div className="select-price">
+                                    
                                     <center>
+                                        Giá tiền :
                                         <input type="radio"  checked />
-                                        Giá khám {formatCurrency(props.price)} VNĐ
+                                        {formatCurrency(props.price)} VNĐ
                                         
                                     </center>
                                 </div>
-                                <span> {moment(props.info.date).format("MM-DD-YYYY")} && 
-                                {props.info.timeTypeData.valueEn}
-                                </span>
-                                <span> </span>
+                                <p>Ngày khám:  {moment(props.info.date).format("MM-DD-YYYY")} 
+                                
+                                </p>
+                                <p> Giờ khám:  {props.info.timeTypeData.valueEn}</p>
 
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -91,7 +148,8 @@ function BookingModel(props) {
                             <div className="col-md-6 col-sm-12 col-xs-12">
                                 <div className="input-icon">
                                     <i className="fa-solid fa-user input-icon-icon"></i>
-                                    <input className=" input-icon-input" placeholder="Họ tên bệnh nhân" value= {infoPatient.lastName +" " + infoPatient.firstName}  disabled ></input>
+                                   
+                                    <input className=" input-icon-input" placeholder="Họ tên bệnh nhân" value= {"Họ tên:" + infoPatient.lastName +" " + infoPatient.firstName}  disabled ></input>
                                 </div>
                             </div>
                             <div className="col-md-6 col-sm-12 col-xs-12">
@@ -106,7 +164,7 @@ function BookingModel(props) {
                     locale="vi"
                     dateFormat="dd/MM/yyyy"
                     
-                    className="form-control"
+                    className="form-control datepicker-custom"
                     /> 
                                 </div>
                             </div>
@@ -115,13 +173,13 @@ function BookingModel(props) {
                             <div className="col-md-6 col-sm-12 col-xs-12">
                                 <div className="input-icon">
                                     <i class="fa-solid fa-phone input-icon-icon"></i>
-                                    <input className=" input-icon-input" placeholder="Số điện thoại liên hệ" value={infoPatient.phone} disabled></input>
+                                    <input className=" input-icon-input" placeholder="Số điện thoại liên hệ" value={"SDT: " +infoPatient.phone} disabled></input>
                                 </div>
                             </div>
                             <div className="col-md-6 col-sm-12 col-xs-12">
                                 <div className="input-icon">
                                     <i class="fa-solid fa-circle-envelope input-icon-icon"></i>
-                                    <input className=" input-icon-input" placeholder="Email" type="email" value={infoPatient.email} disabled></input>
+                                    <input className=" input-icon-input" placeholder="Email" type="email" value={"Email: "+infoPatient.email} disabled></input>
                                 </div>
                             </div>
 
@@ -131,7 +189,7 @@ function BookingModel(props) {
                             <div className="col-md-6 col-sm-12 col-xs-12">
                                 <div className="input-icon">
                                     <i class="fa-sharp fa-solid fa-location-dot input-icon-icon"></i>
-                                    <input className=" input-icon-input" placeholder="Địa chỉ liên hệ" type="text" value={infoPatient.address} disabled></input>
+                                    <input className=" input-icon-input" placeholder="Địa chỉ liên hệ" type="text" value={"Địa chỉ: "+ infoPatient.address} disabled></input>
                                 </div>
                             </div>
                             <div className="col-md-6 col-sm-12 col-xs-12">
@@ -146,23 +204,29 @@ function BookingModel(props) {
                             <div className="col-12">
                                 <div className="input-icon">
                                     <i class="fa-solid fa-circle-envelope input-icon-icon"></i>
-                                    <input className=" input-icon-input" placeholder="Lí do khám" type="text" value={reason}
+                                    {/* <input className=" input-icon-input" placeholder="Lí do khám" type="text" value={reason}
                                     name="reason"
                                     onChange={handleChangeInput}
-                                    ></input>
+                                    ></input> */}
+                                    <textarea className=" input-icon-input" placeholder="Lí do khám" type="text" value={reason}
+                                    name="reason"
+                                    onChange={handleChangeInput}
+                                    cols="30" rows="5"
+                                    ></textarea>
                                 </div>
                             </div>
 
                         </div>
                     </div>
                 </div>
+                </div>
                 <div className="modal-footer">
+                    <button type="button" className="button btn-continue" data-dismiss="modal"
+                    onClick={() => props.handleBookingSuccess(day, time, reason)}
+                    >Thanh toán trực tiếp</button>
                     <button type="button" className="button btn-primary" data-dismiss="modal"
                     onClick={() => props.handleBookingSuccess(day, time, reason)}
                     >Thanh toán Bằng MOMO</button>
-                    <button type="button" className="button btn-continue" data-dismiss="modal"
-                    onClick={() => props.handleBookingSuccess(day, time, reason)}
-                    >Thanh toán Trực Tiếp</button>
                     <button type="button" className="button btn-exit" data-dismiss="modal"
                     onClick={props.handleToogleBookingFarent}
                     

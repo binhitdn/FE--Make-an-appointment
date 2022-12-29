@@ -215,6 +215,7 @@ function NavBar() {
     const [avatar, setAvatar] = useState("https://res.cloudinary.com/dkwojfcv8/image/upload/v1670239396/bmc6u64kd2p3jam6ugiu.png");
     const [firstName, setFirstName] = useState(null);
     const [lastName, setLastName] = useState(null);
+   
     
     
 
@@ -255,6 +256,9 @@ function NavBar() {
     setLastName(account.lastName);
     setEmail(account.email);
     }, [account]);
+
+    
+
 
 
     let handleClickLogout = () => {

@@ -110,12 +110,9 @@ menu-big {
         border-radius: 10px !important;
     }
     .collapsed {
-        .icon-collapsed {
-               i::before {
-                transform: rotate(180deg);
-
-               }
-            }
+        svg {
+            transform: rotate(180deg) !important;
+        }
     }
     
     
@@ -138,16 +135,16 @@ menu-big {
     padding: 10px 12px !important;
 }
 
-.active-nav {
+// .active-nav {
     
-    // color: #eaedf2 !important;
+//     // color: #eaedf2 !important;
     
     
-    color: #eaedf2;
-    background-color: #ffe75d !important;
-    border: 0.0625rem solid #4c5680;
+//     color: #eaedf2;
+//     background-color: #ffe75d !important;
+//     border: 0.0625rem solid #4c5680;
 
-}
+// }
 .icon-sidebar-menu {
     color: rgb(0, 0, 0) !important;
     font-size: 15px !important;

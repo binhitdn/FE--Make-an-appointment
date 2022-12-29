@@ -35,7 +35,7 @@ function StatisticalTable(props) {
           <th scope='col'>Bệnh Nhân</th>
           <th scope='col'>Thời gian</th>
           <th scope='col'>Thời hạn</th>
-          <th scope='col'>Thao tác </th>
+          {/* <th scope='col'>Thao tác </th> */}
         </tr>
       </MDBTableHead>
       <MDBTableBody>
@@ -121,7 +121,7 @@ function StatisticalTable(props) {
             </MDBBadge>
           </td>
           
-          <td>
+          {/* <td>
           
                                 <button className="btn btn-primary"
                                     
@@ -138,7 +138,7 @@ function StatisticalTable(props) {
                                     <i className='fas fa-edit' />
                                 </button>
 
-          </td>
+          </td> */}
         </tr>
                         )
                     })

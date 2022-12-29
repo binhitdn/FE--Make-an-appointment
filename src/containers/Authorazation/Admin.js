@@ -14,6 +14,8 @@ import Statistical from '../Admin/Page/Statistical';
 import ManageHandBook from "../Admin/Page/ManageHandBook"
 import ListHandBook from '../Admin/Page/ListHandBook';
 import ManageIncome from '../Admin/Page/ManageIncome';
+import ManageHandBookEdit from '../Admin/Page/ManageHandBookEdit';
+import Profile from '../Admin/Page/Profile';
 
 function Admin() {
 
@@ -48,6 +50,10 @@ function Admin() {
                                 />
                                 <Route path="/manager-handbook" element= {
                                     <ManageHandBook />
+                                }
+                                />
+                                <Route path="/manager-handbook/edit" element= {
+                                    <ManageHandBookEdit />
                                 }
                                 />
                                 <Route path="/list-handbook" element={
@@ -86,10 +92,14 @@ function Admin() {
                             <SpecialtyManagerEdit />
 
                     }/>
+                    <Route path="/profile" element={
+                        <Profile />
+                    }/>
                     
                     <Route path="login" element={
                         <Navigate to="/"/>
                     }/>
+
                     <Route path="*" element={<Error404Page/>}/>
                 </Routes>
                         </div>

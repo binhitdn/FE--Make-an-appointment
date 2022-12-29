@@ -94,7 +94,7 @@ function Statistical(){
                 </div>
             </div>
             <div className="statistical__footer row">
-                <div className="col-5">
+                <div className="col-11">
                     <h4 className="t-orange">Bác sĩ có thu nhập cao nhất</h4>
                 <MDBTable align='middle'>
       <MDBTableHead>
@@ -149,38 +149,7 @@ function Statistical(){
     </MDBTable>
                
                 </div>
-                <div className="col-6">
-                    <h4 className="t-orange">Người dùng đăng ký mới</h4>
-                {/* <MDBTable>
-      <MDBTableHead>
-        <tr>
-          <th scope='col'>#</th>
-          <th scope='col'>First</th>
-          <th scope='col'>Last</th>
-          <th scope='col'>Handle</th>
-        </tr>
-      </MDBTableHead>
-      <MDBTableBody>
-        <tr>
-          <th scope='row'>1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope='row'>2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope='row'>3</th>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </MDBTableBody>
-    </MDBTable> */}
-                </div>
+                
             
 
             </div>
@@ -197,7 +166,7 @@ function Statistical(){
                             top: "0",
                             right: "0",
                             zIndex: "-1",
-                            opacity: "0.2"
+                            opacity: "0.1"
                         }}
 
             >

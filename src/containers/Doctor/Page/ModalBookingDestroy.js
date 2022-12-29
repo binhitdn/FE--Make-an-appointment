@@ -8,14 +8,19 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { getUserByIdApi } from '../../../services/userService';
 import { toast } from 'react-toastify';
+import { handleChangeStatusBookingApi, handleCreateBookingCancelledApi } from '../../../services/bookingService';
 function ModalBookingDestroy(props) {
     const [idPatient, setIdPatient] = useState(handleAuth().id);
     const [infoPatient, setInfoPatient] = useState({});
     const [reason, setReason] = useState("");
+    const [loading, setLoading] = useState(false);
 
     let getDataUser = async () => {
+        setLoading(true);
         let data = await getUserByIdApi(idPatient);
+
         setInfoPatient(data.users);
+        setLoading(false);
         console.log("A",props.info);
         
     }
@@ -23,8 +28,20 @@ function ModalBookingDestroy(props) {
         getDataUser();
     }, [])
     
-    let handleComfirmBooking = async(id) => {
-        props.handleConfirmBooking(id);
+    let handleComfirmBooking = async() => {
+        setLoading(true);
+        let data = await handleCreateBookingCancelledApi({
+            bookingId: props.info.id,
+            reason: reason
+        });
+        let res = await handleChangeStatusBookingApi(props.info.id, "S4" );
+        setLoading(false);
+        toast.success("Hủy lịch hẹn thành công");
+        
+        
+        props.handleToggleModalDestroy();
+
+        
     }
 
     return (
@@ -59,7 +76,7 @@ function ModalBookingDestroy(props) {
                     </div>
                 </div>
                 <div className="modal-footer">
-                    <input type="button" className="btn btn-primary" value="Xác nhận hủy" onClick={()=>{handleComfirmBooking(props.info.id)}} />
+                    <input type="button" className="btn btn-primary" value="Xác nhận hủy" onClick={handleComfirmBooking} />
                     <input type="button" className="btn btn-exit" data-dismiss="modal"
                     onClick={
                         ()=>{

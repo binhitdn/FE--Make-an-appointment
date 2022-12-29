@@ -65,6 +65,7 @@ function ManagerSchedule() {
         console.log("arrTime2 " ,arrTime);
         if(!currentDate){
             let dates = new Date();
+            dates.setDate(dates.getDate());
             setCurrentDate(dates);
             setDateFm(dates.getFullYear()+"-"+(dates.getMonth()+1)+"-"+dates.getDate());
         }
@@ -110,7 +111,9 @@ function ManagerSchedule() {
         console.log(result);
         
         let bulk = await bulkCreateScheduleApi({
-            arrSchedule: result
+            arrSchedule: result,
+            doctorId: id,
+            date: moment(currentDate).format("YYYY-MM-DD")
         });
         toast.success("Lưu thành công");
        

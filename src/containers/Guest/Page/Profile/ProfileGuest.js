@@ -42,6 +42,7 @@ function ProfileGuest() {
         setPhone(account.phone);
         setAddress(account.address);
         setAvatar(account.image ? account.image : "https://res.cloudinary.com/dkwojfcv8/image/upload/v1670239396/bmc6u64kd2p3jam6ugiu.png");
+        setGender(account.gender);
         
     }
     useEffect(() => {
@@ -77,6 +78,9 @@ function ProfileGuest() {
                 break;
             case "oldPassword":
                 setOldPassword(value);
+                break;
+            case "gender":
+                setGender(value);
                 break;
             default:
                 break;
@@ -211,7 +215,8 @@ function ProfileGuest() {
                 <div className="col-2">
                 <label>Giới tính</label>
                 <select className="form-control" name="gender"
-                onChange={handleChangeInput} value={gender}
+                onChange={handleChangeInput} 
+                value={gender}
                 >
                     <option value="1">Nam</option>
                     <option value="0">Nữ</option>

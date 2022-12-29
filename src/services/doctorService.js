@@ -27,6 +27,9 @@ let handleGetScheduleByDateApi = (id,date) => {
 let handleCreateNewReviewApi = (data) => {
     return axios.post('/api/create-new-reviewer-booking', data)
 }
+let handleEditReviewApi = (data) => {
+    return axios.put('/api/edit-reviewer-booking', data)
+}
 let handleGetReviewByDoctorIdApi = (id) => {
     return axios.get('/api/get-reviews-booking?doctorId='+id)
 }
@@ -40,4 +43,4 @@ let handleGetIncomeDoctorApi = (id) => {
 let handleGetIncomeAllDoctorApi = (month) => {
     return axios.get('/api/get-all-income-doctor?month='+month);
 }
-export { handleSaveInforDoctorsApi , handleGetDoctorByIdApi ,handleGetTopDoctorApi,handleGetDoctorByIdDoctorApi,handleGetDoctorBySpecialtyApi,handleGetIdDoctorByIdUserApi,bulkCreateScheduleApi,handleGetScheduleByDateApi,handleCreateNewReviewApi,handleGetReviewByDoctorIdApi,countViewDoctorApi,handleGetIncomeDoctorApi,handleGetIncomeAllDoctorApi}
+export { handleSaveInforDoctorsApi , handleGetDoctorByIdApi ,handleGetTopDoctorApi,handleGetDoctorByIdDoctorApi,handleGetDoctorBySpecialtyApi,handleGetIdDoctorByIdUserApi,bulkCreateScheduleApi,handleGetScheduleByDateApi,handleCreateNewReviewApi,handleGetReviewByDoctorIdApi,countViewDoctorApi,handleGetIncomeDoctorApi,handleGetIncomeAllDoctorApi,handleEditReviewApi}

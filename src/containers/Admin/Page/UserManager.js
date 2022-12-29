@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./scss/UserManager.scss";
 import ModalLoading from "../../../components/ModalLoading";
+import { editUserApi } from "../../../services/userService";
 
 function UserManager() {
     const[id, setId] = useState(null);
@@ -21,11 +22,13 @@ function UserManager() {
     const [address, setAddress] = useState("");
     const [status, setStatus] = useState("A");
     const [loading, setLoading] = useState(false);
+   
 
     let handleGetData = async () => {
         let gender = await axios.get("/api/allcode?type=GENDER");
         let role = await axios.get("/api/allcode?type=ROLE");
         setRoleData(role.data.data);
+
 
         setGenderData(gender.data.data);
        
@@ -52,7 +55,7 @@ function UserManager() {
             setRole(value);
         } else if (name === "address") {
             setAddress(value);
-        }
+        } 
     }
     let handleAddUser = async () => {
         if (!checkValidate()) {
@@ -86,7 +89,7 @@ function UserManager() {
                 role: role,
                 address: address
             }
-            let editUser = await axios.put("/api/edit-user", data);
+            let editUser = await editUserApi(data);
             setEmail("");
             setPassword("");
             setFirstName("");
@@ -148,11 +151,10 @@ function UserManager() {
     })
 
     let handleDeleteUserFromParent = async (id) => {
-        // await handleDeleteUserApi(id);
-        // this.props.fetchAllUserStart();
         let a = await axios.delete("/api/delete-user?id=" + id);
-        console.log("Delete",a);
+        console.log("a: ", a);
         await handleGetAllUser();
+        toast("Đã xóa thành công");
     }
     let handleGetAllUser = async () => {
         let inputId = "ALL";
@@ -171,6 +173,7 @@ function UserManager() {
         // console.log("api: ", api.users);
         // setUsers(api.users);
     }
+    
 
     return (
         <div className="userM_container">
@@ -309,13 +312,15 @@ function UserManager() {
                                 
                             
             </div>
+            
             <div
-            style={{width: "100%",marginTop: "20px"}}
+            
             >
                 <TableUser
                     handleDeleteUserFromParent={handleDeleteUserFromParent}
                     handleEditUserFromParentKey={handleEditUserFromParent}
                     users={users}
+                    roleData={roleData}
                 />
             </div>
 

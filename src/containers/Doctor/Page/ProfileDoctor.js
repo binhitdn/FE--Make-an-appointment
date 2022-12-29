@@ -7,6 +7,7 @@ import { handleGetAllCode } from '../../../services/systemService';
 import { handleGetDoctorByIdApi, handleSaveInforDoctorsApi } from '../../../services/doctorService';
 import {handleAuth} from '../../../Auth/index';
 import axios from "../../../axios";
+import { toast } from 'react-toastify';
 
 
 function ProfileDoctor() {
@@ -25,7 +26,7 @@ function ProfileDoctor() {
     const [addressClinic,setAddressClinic] = useState("");
     const [contentHTML,setContentHTML] = useState("");
     const [contentMarkdown,setContentMarkdown] = useState("");
-    const [avatar,setAvatar] = useState("");
+    
     const [payment,setPayment] = useState("");
     const [description,setDescription] = useState("");
 
@@ -54,9 +55,9 @@ function ProfileDoctor() {
         setProvince(res.data.provinceId);
         setNameClinic(res.data.nameClinic);
         setAddressClinic(res.data.addressClinic);
-        setContentHTML(res.data.contentHTML);
-        setContentMarkdown(res.data.contentMarkdown);
-        setAvatar(res.data.userData.image);
+        setContentHTML(res.data.contentHTML ? res.data.contentHTML : "");
+        setContentMarkdown(res.data.contentMarkdown ? res.data.contentMarkdown : ""); 
+        
         setPayment(res.data.paymentId);
         setDescription(res.data.description);
     }
@@ -96,9 +97,7 @@ function ProfileDoctor() {
         if(name === "addressClinic"){
             setAddressClinic(value);
         }
-        if(name === "avatar"){
-            setAvatar(value);
-        }
+       
         if(name==="payment"){
             setPayment(value);
         }
@@ -111,7 +110,7 @@ function ProfileDoctor() {
     }
     let handleSubmit = async(e) => {
         e.preventDefault();
-        if(!specialty || !position || !cost || !province || !nameClinic || !addressClinic || !contentHTML || !contentMarkdown || !avatar || !payment || !description){
+        if(!specialty || !position || !cost || !province || !nameClinic || !addressClinic || !contentHTML || !contentMarkdown ||  !payment || !description){
             alert("Vui lòng điền đầy đủ thông tin");
         } else {
             let res = await handleSaveInforDoctorsApi({
@@ -123,12 +122,13 @@ function ProfileDoctor() {
                 addressClinic: addressClinic,
                 contentHTML: contentHTML,
                 contentMarkdown: contentMarkdown,
-                avatar: avatar,
+             
                 payment: payment,
                 email: handleAuth().email,
                 description: description
             })
             console.log("res",res)
+            toast.success("Cập nhật thông tin thành công");
         }
         
 
@@ -144,78 +144,17 @@ function ProfileDoctor() {
         console.log("addressClinic: ",addressClinic);
         console.log("contentHTML: ",contentHTML);
         console.log("contentMarkdown: ",contentMarkdown);
-        console.log("avatar: ",avatar);
         console.log("payment: ",payment);
         console.log("description: ",description);
     }
-    const handleFileUpload = async(e) => {
-        const uploadData = new FormData();
-        uploadData.append("file", e.target.files[0], "file");
-        
-       
-        let a= await axios.post("/cloudinary-upload", uploadData)
-        setAvatar(a.secure_url);
-      }
+   
     
 
     return (
         <>
             <div className="ProfileDoctor-container">
             <div className="row">
-                <div className="col-1">
-                    <div className="ProfileDoctor__avatar">
-                        <label
-                        className="image-avatar"
-                        style={{
-                            backgroundImage: `url(${avatar})`,
-                            display: "block",
-                            position: "relative",
-                        }}
-                        
-                        htmlFor="up-photo" 
-                        >
-                            <div className="image-avatar__overlay"
-                            style={{
-                                background: "rgba(0,0,0,0.5)",
-                                position: "absolute",
-                                bottom: "0",
-                                left: "0",
-                                right: "0",
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                padding: "7px",
-                                color: "#fff",
-                                cursor: "pointer",
-
-
-                            }}
-                            >
-                                <i className="fas fa-camera"
-                                style={{
-                                    fontSize: "20px",
-                                   
-                                }}
-                                ></i>
-                            </div>
-
-
-                        </label>
-                    </div>
-                    <div className="select-avatar">
-                    <input
-              type="file"
-              onChange={(e) => handleFileUpload(e)}
-              id="up-photo"
-              hidden
-
-            />
-
-
-                        
-
-                </div>           
-            </div>
+                
             <div className="row">
             <div className="col-2">
                     <div className="ProfileDoctor__info">
@@ -338,8 +277,8 @@ function ProfileDoctor() {
             </div>
             <div className="row">
                 <div className="col-10">
-                    <label className="ProfileDoctor__info__name-clinic">Mo ta Phong Kham</label>
-                    <textarea className="form-control" rows="5" placeholder="Mô tả phòng khám"
+                    <label className="ProfileDoctor__info__name-clinic">Mo ta Bác sĩ</label>
+                    <textarea className="form-control" rows="4" placeholder="Mô tả bác sĩ"
                     onChange={handleChangeInput}
                     name="description"
                     value={description}
@@ -349,20 +288,22 @@ function ProfileDoctor() {
             <div className="row">
                 <div className="col-10">
                     <label className="ProfileDoctor__info__name-clinic">Chi tiet</label>
-                    <MdEditor style={{ height: '500px' }} renderHTML={text => mdParser.render(text)} onChange={handleEditorChange}
+                    <MdEditor style={{ height: '300px' }} renderHTML={text => mdParser.render(text)} onChange={handleEditorChange}
                     value={contentMarkdown}
                     
                     />
 
                 </div>
             </div>
-            <input type="submit" className="btn btn-primary" value="Lưu"
-            onClick={handleSubmit}
-            />
+            
             </div>
+            
             
 
         </div>
+        <input type="submit" className="btn btn-primary" value="Lưu"
+            onClick={handleSubmit}
+            />
         <div
                 className="background-schedule"
                         style={{

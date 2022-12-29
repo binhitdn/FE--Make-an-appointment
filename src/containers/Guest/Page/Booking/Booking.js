@@ -33,7 +33,7 @@ function Booking() {
 
     useEffect(() => {
         if(idUser){
-            console.log("OK");
+            
             getBooking();
         } else {
             navigate("/login");

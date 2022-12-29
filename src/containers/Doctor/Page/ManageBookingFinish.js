@@ -8,6 +8,8 @@ import { handleGetDoctorByIdApi } from "../../../services/doctorService";
 import ModalBookingFinish from "./ModalBookingFinish";
 import "./scss/ManageBooking.scss"
 import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
+import NotData from "../../../components/NotData";
+import ModalLoading from "../../../components/ModalLoading";
 
 
 function ManageBookingFinish() {
@@ -23,11 +25,18 @@ function ManageBookingFinish() {
     const [income, setIncome] = useState(0);
     const [countSchedule, setCountSchedule] = useState(0);
     const [cost, setCost] = useState(0);
+    const [loading, setLoading] = useState(false);
 
     const [clickPatient, setClickPatient] = useState();
     
     let getData = async() => {
-        let idd = await handleGetDoctorByIdApi(handleAuth().id);
+        
+       
+
+        (
+            async () => {
+                setLoading(true);
+                let idd = await handleGetDoctorByIdApi(handleAuth().id);
         setIdDoctor(idd.data.id);
         
         let data = await handleGetBookingApi("S3",idd.data.id);
@@ -37,9 +46,11 @@ function ManageBookingFinish() {
 
         let doctorData = await handleGetDoctorByIdApi(handleAuth().id);
         setCost(doctorData.data.priceId);
-       
-
-        console.log("data",data);
+            })().then(() => {
+                setLoading(false);
+            })
+                
+        
    
         
     }
@@ -65,103 +76,107 @@ function ManageBookingFinish() {
     return (
         <>
                
-                <MDBTable align='middle'
+                { dataPatient && dataPatient.filter((item) => item.statusID === "S3").length > 0 ? 
+                    <MDBTable align='middle'
 
->
-      <MDBTableHead>
-        <tr>
-            <th>Id</th>
-            <th>Email Bệnh Nhân</th>
-            <th>Thời gian</th>
-            <th>Ngay kham xong</th>
-            <th>Thao tac</th>
-        </tr>
-      </MDBTableHead>
-      <MDBTableBody>
-        
-        
-        {
-                 dataPatient && dataPatient.filter((item) => item.statusID === "S3").map((item, index) => {
-                  
-                  
-                  
-               
-
-
-
-
-                 
-                  
-              
-                    return (
-                        <tr key={index}>
-        <td>{index + 1}</td>
-      <td>
-        <div className='d-flex align-items-center'>
-          <img
-            src={ item.patientData.userData.image ? item.patientData.userData.image : 'https://res.cloudinary.com/dkwojfcv8/image/upload/v1670239396/bmc6u64kd2p3jam6ugiu.png'}
-            alt=''
-            style={{ width: '45px', height: '45px' }}
-            className='rounded-circle'
-          />
-          <div className='ms-3'>
-            <p className='fw-bold mb-1'>
-            {item.patientData.userData.lastName} {item.patientData.userData.firstName}
-            </p>
-            <p className='text-muted mb-0'>
-            {item.patientData.userData.email}
-            </p>
-          </div>
-        </div>
-      </td>
-      <td>
-        <p className='fw-normal mb-1'>
-            {moment(item.date).format("DD-MM-YYYY")} 
-        </p>
-        <p className='text-muted mb-0'>
-            {item.timeTypeData2.valueVi}
-        </p>
-      </td>
-      <td>
-        <p className='fw-normal mb-1'>
-            {moment(item.updatedAt).format("hh:mm:ss")}
-        </p>
-        <p className='text-muted mb-0'>
-            {moment(item.updatedAt).format("DD-MM-YYYY")}
-        </p>
-      </td>
-      
-      <td>
-      
-                            <button className="btn btn-primary"
-                                
-                                onClick={
-                                    () => {
-                                        handleToggleModal(item);
-                                    }
-                                
-                                }
+                    >
+                          <MDBTableHead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Email Bệnh Nhân</th>
+                                <th>Thời gian</th>
+                                <th>Ngay kham xong</th>
+                                <th>Thao tac</th>
+                            </tr>
+                          </MDBTableHead>
+                          <MDBTableBody>
+                            
+                            
+                            {
+                                     dataPatient && dataPatient.filter((item) => item.statusID === "S3").map((item, index) => {
+                                      
+                                      
+                                      
+                                   
+                    
+                    
+                    
+                    
+                                     
+                                      
                                   
-                            >
-                                Xem chi tiết
-                                <i className='fas fa-edit' />
-                            </button>
-
-      </td>
-    </tr>
-                    )
-                })
+                                        return (
+                                            <tr key={index}>
+                            <td>{index + 1}</td>
+                          <td>
+                            <div className='d-flex align-items-center'>
+                              <img
+                                src={ item.patientData.userData.image ? item.patientData.userData.image : 'https://res.cloudinary.com/dkwojfcv8/image/upload/v1670239396/bmc6u64kd2p3jam6ugiu.png'}
+                                alt=''
+                                style={{ width: '45px', height: '45px' }}
+                                className='rounded-circle'
+                              />
+                              <div className='ms-3'>
+                                <p className='fw-bold mb-1'>
+                                {item.patientData.userData.lastName} {item.patientData.userData.firstName}
+                                </p>
+                                <p className='text-muted mb-0'>
+                                {item.patientData.userData.email}
+                                </p>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <p className='fw-normal mb-1'>
+                                {moment(item.date).format("DD-MM-YYYY")} 
+                            </p>
+                            <p className='text-muted mb-0'>
+                                {item.timeTypeData2.valueVi}
+                            </p>
+                          </td>
+                          <td>
+                            <p className='fw-normal mb-1'>
+                                {moment(item.updatedAt).format("hh:mm:ss")}
+                            </p>
+                            <p className='text-muted mb-0'>
+                                {moment(item.updatedAt).format("DD-MM-YYYY")}
+                            </p>
+                          </td>
+                          
+                          <td>
+                          
+                                                <button className="btn btn-primary"
+                                                    
+                                                    onClick={
+                                                        () => {
+                                                            handleToggleModal(item);
+                                                        }
+                                                    
+                                                    }
+                                                      
+                                                >
+                                                    Xem chi tiết
+                                                    <i className='fas fa-edit' />
+                                                </button>
+                    
+                          </td>
+                        </tr>
+                                        )
+                                    })
+                                    }
+                    
+                            
+                          </MDBTableBody>
+                        </MDBTable>
+                    : <NotData data="Không có lịch hẹn nào" />
                 }
-
-        
-      </MDBTableBody>
-    </MDBTable>
                 <div className="manage-income">
                     <div>
-                        Tổng cộng: <b>{countSchedule} lịch hẹn</b>
+                        Tổng cộng: <b>{dataPatient  ? dataPatient.filter((item) => item.statusID === "S3").length : 0} lịch hẹn</b>
+                        
                     </div>
                     <div>
-                        Tổng thu: <b>{convertCurrency(countSchedule * cost)} VNĐ</b>
+                        Tổng thu: <b>{(convertCurrency(dataPatient ? dataPatient.filter((item) => item.statusID === "S3").length : 0) * cost)} VNĐ</b>
                     </div>
 
                 </div>
@@ -172,6 +187,9 @@ function ManageBookingFinish() {
 {toggleModal && <ModalBookingFinish toggleModal={toggleModal}  info={clickPatient} price={3000} handleToggleModal={handleToggleModal} 
 handleConfirmBooking = {handleConfirmBooking}
 />}
+{
+                loading && <ModalLoading/>
+            }
         </>
     )
 

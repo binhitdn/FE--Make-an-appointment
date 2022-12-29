@@ -1,0 +1,20 @@
+
+.modal-loadings {
+    
+    .modal-content{
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+    } 
+}
+.modal-loading {
+    background-image: url("../assets/images/data/loading.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    height: 300px;
+    width: 300px;
+    margin: 0 auto;
+    
+}

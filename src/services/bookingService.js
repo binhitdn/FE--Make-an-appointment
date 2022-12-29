@@ -27,9 +27,12 @@ let handleCreateBookingFinishedApi = (data) => {
 let handleCreateBookingCancelledApi = (data) => {
     return axios.post('/api/create-booking-cancelled', data)
 }
+let handleGetBookingCancelledApi = (patientId) => {
+    return axios.get("/api/get-booking-cancelled?bookingId="+patientId)
+}
 
 const handGetAllHandbookFinishedByPatient = (patientId) => {
     // return axios.get(`/api/get-all-booking-finished?patientId=${patientId}`)
     return axios.get(`/api/get-all-booking-finished?patientId=${patientId}`)
 }
-export { handleBookingApi ,handleGetBookingApi,handleGetBookingForPatientApi,handleGetCountBookingByDoctorApi,handleComfirmBookingApi,handleChangeStatusBookingApi,handleGetBookingByDoctorStatusAndDateApi,handleCreateBookingFinishedApi,handGetAllHandbookFinishedByPatient,handleCreateBookingCancelledApi}
+export { handleBookingApi ,handleGetBookingApi,handleGetBookingForPatientApi,handleGetCountBookingByDoctorApi,handleComfirmBookingApi,handleChangeStatusBookingApi,handleGetBookingByDoctorStatusAndDateApi,handleCreateBookingFinishedApi,handGetAllHandbookFinishedByPatient,handleCreateBookingCancelledApi,handleGetBookingCancelledApi}

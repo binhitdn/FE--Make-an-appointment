@@ -33,7 +33,7 @@ function HandBook() {
             return "Đã đăng vào ngày " +moment(date).format("DD/MM/YYYY");
         }
         if (days > 0) {
-            return days + " ngày" ;
+            return days + " ngày trước" ;
         }
         if (hours > 0) {
             return hours + " giờ trước";
@@ -78,7 +78,7 @@ function HandBook() {
                         </div>
                         <div class="interaction">
                             <span class="view interaction-item">{item.view}<i class="fa-duotone fa-eye"></i></span>
-                            <span class="comment interaction-item">{item.like} <i class="fa-duotone fa-comments"></i></span>
+                            
                             <span class="time interaction-item">
                                 {/* {moment.subtract(moment(item.createdAt).format('DD/MM/YYYY hh:mm:ss'), moment(new Date()).format('DD/MM/YYYY hh:mm:ss')).milliseconds()}  */}
                                 {/* {moment(item.createdAt).format('ss')} */}

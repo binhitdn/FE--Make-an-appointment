@@ -17,7 +17,7 @@ function Register() {
     const [lastName, setLastName] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
-    const [gender, setGender] = useState("");
+    const [gender, setGender] = useState("M");
     const [genderSelect, setGenderSelect] = useState([]);
     const [radioChecked, setRadioChecked] = useState(false);
 

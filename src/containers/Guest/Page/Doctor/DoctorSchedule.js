@@ -9,6 +9,7 @@ import BookingModel from "./BookingModel";
 import { handleBookingApi, handleGetBookingForPatientApi } from "../../../../services/bookingService";
 import { getPatientIdByUserIdApi } from "../../../../services/userService";
 import { useNavigate } from "react-router-dom";
+import ModalLoading from "../../../../components/ModalLoading";
 
 
 function DoctorSchedule(props) {
@@ -25,10 +26,13 @@ function DoctorSchedule(props) {
     const [province, setProvince] = useState("");
     const [toggleBooking, setToggleBooking] = useState(false);
     const [itemBooking, setItemBooking] = useState({});
+    const [loading, setLoading] = useState(false);
 
 
     let getData = async () => {
 
+       (async () => {
+        setLoading(true);
         let doctorID = window.location.pathname.split("/")[2];
         setDoctorId(doctorID);      
         let data2 = await handleGetDoctorByIdDoctorApi(doctorID)
@@ -36,6 +40,9 @@ function DoctorSchedule(props) {
         setNameClinic(data2.data.nameClinic);
         setPayment(data2.data.paymentData.valueVi);
         setPrice(data2.data.priceId);
+       })().then(() => {
+        setLoading(false);
+       })
 
     }
     useEffect(() => {
@@ -43,9 +50,16 @@ function DoctorSchedule(props) {
     }, [])
 
     let updateSchedule = async () => {
-        let data = await handleGetScheduleByDateApi( window.location.pathname.split("/")[2], date);
-        setArrSchedule(data.data)
-        console.log("Schedule", data)
+    //    (
+    //           async () => {
+                setLoading(true);
+                let data = await handleGetScheduleByDateApi( window.location.pathname.split("/")[2], date);
+                setArrSchedule(data.data)
+                setLoading(false);
+                // }
+        // ).then(() => {
+        //     setLoading(false);
+        // })
     }
 
     useEffect(() => {
@@ -77,15 +91,7 @@ function DoctorSchedule(props) {
                
                 arrDate.push(object)
             
-            // else if (language === languages.EN) {
-            //     object.label = moment(new Date()).add(i, 'days').locale('en').format('dddd - DD/MM')
-            //     object.value = moment(new Date()).add(i, 'days').format("DD/MM/YYYY")
-            //     arrDate.push(object)
-            // } else if (language === languages.JP) {
-            //     object.label = moment(new Date()).add(i, 'days').locale('ja').format('M月D日 (ddd)')
-            //     object.value = moment(new Date()).add(i, 'days').format("DD/MM/YYYY")
-            //     arrDate.push(object)
-            // }
+
             setArrDate(arrDate)
         }
     }
@@ -108,7 +114,10 @@ function DoctorSchedule(props) {
         let data2 = data.filter((item) => {
             return item.statusID !== "S3";
         })
-        if(data2.length > 0) {
+        let data3 = data.filter((item) => {
+            return item.statusID !== "S4";
+        })
+        if(data3.length > 0) {
             toast.error("Bạn đã có lịch khám chưa hoàn thành")
         } else {
             setItemBooking(item);
@@ -247,7 +256,12 @@ function DoctorSchedule(props) {
                 </div>
             </div >
              {toggleBooking && <BookingModel toggleBooking={toggleBooking} handleToogleBookingFarent={handleToogleBooking} info={itemBooking} price={price} doctorName={props.doctorName} doctorPosition={props.doctorPosition} handleBookingSuccess={handleBookingSuccess} 
+             doctorAvatar={props.doctorAvatar} 
+             
              />}
+             {
+                loading && <ModalLoading/>
+             }
         </>
     );
 

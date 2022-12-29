@@ -213,13 +213,13 @@ function ModelBookingConfirm(props) {
                     
 
                 </div>
-            <div>
+            {/* <div>
                 <div
                 onClick={handlePrint}
                 >
                 Print this out!
                 </div>
-        </div>
+        </div> */}
            
             
             </Modal >

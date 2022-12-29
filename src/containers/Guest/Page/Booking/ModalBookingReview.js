@@ -14,6 +14,7 @@ function ModalBookingReview(props) {
     const [idPatient, setIdPatient] = useState(handleAuth().id);
     const [infoPatient, setInfoPatient] = useState({});
     const [rating, setRating] = useState(5);
+    const [statusEdit, setStatusEdit] = useState(false);
     const [review, setReview] = useState("");
     var Buffer = require('buffer/').Buffer
 
@@ -21,32 +22,26 @@ function ModalBookingReview(props) {
     let getDataUser = async () => {
         let data = await getUserByIdApi(idPatient);
         setInfoPatient(data.users);
-        
-        
     }
     useEffect(() => {
-        getDataUser();
-        if(props.statusEdit=="E"){
-            setRating(props.contentEdit.rate);
-            setReview(props.contentEdit.review);
-        }
+        refresh();
     }, [])
+
+    let refresh = () => {
+        console.log("props",props);
+        getDataUser();
+        let check = props.info.reviewerBookingData.id ? true : false;
+        setStatusEdit(check);
+        
+            setRating( props.info.reviewerBookingData.rate ? props.info.reviewerBookingData.rate : 5);
+            setReview(props.info.reviewerBookingData.review ? props.info.reviewerBookingData.review : "");
+            
+        console.log("info",props.statusEdit);
+    }
     
-    let handleComfirmBooking = async(id) => {
-        props.handleConfirmBooking(id);
-    }
-    useEffect(() => {
-        console.log("info",props.info);
-    })
-    let parsePhoto = (image) => {
-        if (image) {
-
-            return new Buffer(image, 'base64').toString('binary');
-
-        } else {
-            return "";
-        }
-    }
+  
+   
+    
     let convertCurrency = (money) => {
         return money.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
     }
@@ -57,14 +52,24 @@ function ModalBookingReview(props) {
             rate: rating,
             review: review
         }
-        let a = await handleCreateNewReviewApi(data);
-        console.log("a",a);
-        toast.success("Đánh giá thành công");
-        props.handleToggleModal();
+        // let a = await handleCreateNewReviewApi(data);
+        // console.log("a",a);
+        // toast.success("Đánh giá thành công");
+        // props.handleToggleModal();
+        props.handleSaveReview(data)
+        
         
     }
     let handleEditReview = async () => {
+        let data = {
+            bookingId: props.info.id,
+            rate: rating,
+            review: review
+        }
+        props.handleEditReview(data);
+        
     }
+  
     return (
         <Modal isOpen={true} className={'booking-modal-container'}
                 centered={true}
@@ -107,8 +112,10 @@ function ModalBookingReview(props) {
                                 <div className="select-price">
                                     <center>
                                         <div className="price">
+                                            <b>
                                             <span className="price-number">{convertCurrency(props.info.doctorData.priceId)}</span>
                                             <span className="price-unit">VNĐ</span>
+                                            </b>
                                         </div>
                                        
                                     </center>
@@ -126,7 +133,7 @@ function ModalBookingReview(props) {
                             <div className="col-6">
                                 <div className="input-icon">
                                     <i className="fa-solid fa-user input-icon-icon"></i>
-                                    <p>Họ Tên Bác Sĩ: 
+                                    <p><b>Họ Tên Bác Sĩ: </b>
                                         {props.info.doctorData.userData.lastName} {props.info.doctorData.userData.firstName}
                                         
                                          </p>
@@ -134,8 +141,8 @@ function ModalBookingReview(props) {
                             </div>
                             <div className="col-6">
                                 <div className="input-icon">
-                                    <i class="fa-regular fa-calendar input-icon-icon"></i>
-                                    <p>Chuyên Khoa: 
+                                    <i class="fa-duotone fa-flask input-icon-icon"></i>
+                                    <p><b>Chuyên Khoa: </b>
 
                                         {props.info.doctorData.specialtyData.name}
                                     </p>
@@ -145,16 +152,16 @@ function ModalBookingReview(props) {
                         <div className="row">
                             <div className="col-6">
                                 <div className="input-icon">
-                                    <i class="fa-solid fa-phone input-icon-icon"></i>
-                                    <p> Lí Do Khám: 
+                                <i class="fa-regular fa-clipboard-medical input-icon-icon"></i>
+                                    <p><b> Lí Do Khám: </b>
                                         {props.info.reason}
                                         </p>
                                 </div>
                             </div>
                             <div className="col-6">
                                 <div className="input-icon">
-                                    <i class="fa-solid fa-envelope input-icon-icon"></i>
-                                    <p>Chuẩn đoán: 
+                                <i class="fa-sharp fa-solid fa-bed input-icon-icon"></i>
+                                    <p><b>Chuẩn đoán: </b>
                                         {props.info.bookingfinishData.diagnose}
                                     </p>
                                 </div>       
@@ -165,8 +172,8 @@ function ModalBookingReview(props) {
                         <div className="row">
                             <div className="col-12">
                                 <div className="input-icon">
-                                    <i class="fa-solid fa-envelope input-icon-icon"></i>
-                                    <p>Đơn thuốc đề xuất: 
+                                <i class="fa-light fa-capsules input-icon-icon"></i>
+                                    <p><b>Đơn thuốc đề xuất: </b>
                                         {props.info.bookingfinishData.medicine}
                                     </p>
                             
@@ -176,9 +183,9 @@ function ModalBookingReview(props) {
                         </div>
                         <div className="row">
                             <div className="col-12">
-                                <div className="input-icon">
-                                    <i class="fa-solid fa-envelope input-icon-icon"></i>
-                                    <p>Lời khuyên:
+                                <div className="input-icon ">
+                                <i class="fa-solid fa-book input-icon-icon"></i>
+                                    <p><b>Lời khuyên:</b>
                                         {props.info.bookingfinishData.note}
                                     </p>
                                 </div>
@@ -244,7 +251,7 @@ function ModalBookingReview(props) {
                     >Thoát</button> */}
                     {/* <button className="btn btn-primary" onClick={handleSaveReview  }>Đánh Giá</button> */}
                     {
-                        props.statusEdit == "E" ? <button className="btn btn-primary" onClick={handleEditReview  }>Sửa Đánh Giá</button>
+                        statusEdit ? <button className="btn btn-primary" onClick={handleEditReview  }>Sửa Đánh Giá</button>
                         : <button className="btn btn-primary" onClick={handleSaveReview  }>Đánh Giá</button>
                     }  
                     <button

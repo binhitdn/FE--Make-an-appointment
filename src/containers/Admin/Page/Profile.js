@@ -1,9 +1,11 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import {handleAuth} from '../../../Auth/index';
 import { editUserApi, getUserByIdApi } from "../../../services/userService";
 import axios from "../../../axios";
 import { toast } from "react-toastify";
+import { AuthToken } from "../../../utils/AuthToken";
+import ModalLoading from "../../../components/ModalLoading";
 
 
 
@@ -19,17 +21,31 @@ function Profile() {
     const [confirmPassword,setConfirmPassword] = useState("");
     const [oldPassword,setOldPassword] = useState("");
     const [selectedItem,setSelectedItem] = useState(1);
+    const {account,setAccount} = useContext(AuthToken);
+    const [loading,setLoading] = useState(false);
 
 
     let handleGetUserDetails = async() => {
-        let response = await getUserByIdApi(handleAuth().id);
-        console.log(response.users);
+        let  response ;
+       (
+        async () => {
+            setLoading(true);
+           response = await getUserByIdApi(handleAuth().id);
+        }
+        )().then(() => {
+        setLoading(false);
+            console.log(response.users);
         setFirstName(response.users.firstName);
         setLastName(response.users.lastName);
         setEmail(response.users.email);
         setPhone(response.users.phone);
         setAddress(response.users.address);
         setAvatar(response.users.image ? response.users.image : "https://t3.ftcdn.net/jpg/02/09/37/00/360_F_209370065_JLXhrc5inEmGl52SyvSPeVB23hB6IjrR.jpg");
+        }
+        
+            
+       )
+        
     }
     useEffect(() => {
         handleGetUserDetails();
@@ -107,6 +123,8 @@ function Profile() {
             let response = await editUserApi(user);
             console.log(response);
             toast.success("Cập nhật thông tin thành công");
+            
+            
         }
         
         
@@ -319,7 +337,11 @@ function Profile() {
                         }}
 
             >
+                {
+                    loading && <ModalLoading />
+                }
             </div> 
+            
         </>
     )
 }

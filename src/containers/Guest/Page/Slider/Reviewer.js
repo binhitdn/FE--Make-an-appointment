@@ -30,10 +30,21 @@ function Reviewer() {
               return (
                   <div className="reviewer" key={index}>
           <div className="reviewer__content">
-              <div className="reviewer__content__img">
+              <div className="reviewer__content__img"
+              style={{
+                flexShrink: "0",
+                            backgroundClip: "content-box",
+                            border: "1px solid #e9ecef",
+                            padding: "2px",
+                            boxSizing: "border-box",
+                            boxShadow: "0 0 0 1px rgba(0,0,0,.125)",
+                }}
+              >
                   <img src={
                       reviewer.image
-                  } alt="" className="reviewer-avatar" />
+                  } alt="" className="reviewer-avatar" 
+                  
+                  />
               </div>
               <div className="reviewer__content__text">
                   <b>
@@ -73,7 +84,16 @@ function Reviewer() {
               return (
                   <div className="reviewer" key={index}>
           <div className="reviewer__content">
-              <div className="reviewer__content__img">
+              <div className="reviewer__content__img"
+              style={{
+                flexShrink: "0",
+                            backgroundClip: "content-box",
+                            border: "1px solid #e9ecef",
+                            padding: "2px",
+                            boxSizing: "border-box",
+                            boxShadow: "0 0 0 1px rgba(0,0,0,.125)",
+                }}
+              >
                   <img src={
                       reviewer.image
                   } alt="" className="reviewer-avatar" />

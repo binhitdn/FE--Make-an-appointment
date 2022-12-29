@@ -8,52 +8,157 @@ import { useState } from "react";
 import moment from "moment";
 import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import ModalBookingReview from "./ModalBookingReview";
+import { handleCreateNewReviewApi, handleEditReviewApi } from "../../../../services/doctorService";
 function BookingReview() {
     let idUser = handleAuth().id;
     let navigate = useNavigate();
     const [booking, setBooking] = useState([]);
     const [toggleModal, setToggleModal] = useState(false);
     const [bookingSelected, setBookingSelected] = useState(null);
-    const [statusEdit, setStatusEdit] = useState("A");
+    const [statusEdit, setStatusEdit] = useState(false);
     const [contentEdit, setContentEdit] = useState("");
+    const [loading, setLoading] = useState(false);
 
 
     let getBooking = async () => {
         // let data = await handleGetBookingForPatientApi(handleAuth().id);
+        refreshBooking();
+        
+    }
+    let refreshBooking = async () => {
         let data = await handGetAllHandbookFinishedByPatient(handleAuth().id);
         let data2 =data.filter((item) => {
             return item.statusID === "S3";
         })
-        console.log(data2);
+        
 
        
         setBooking(data2);
     }
-    let handleToggleModal = (item) => {
-        setToggleModal(!toggleModal);
-        setBookingSelected(item);
-        if(item.reviewerBookingData.id){
-            setStatusEdit("E");
-            setContentEdit({
-                review: item.reviewerBookingData.review,
-                rate: item.reviewerBookingData.rate
-            });
+    let handleToggleModal = async(item) => {
+        
+
+        // setBookingSelected(item);
+        // setToggleModal(!toggleModal);
+        // if(toggleModal) {
+        //     let checkExistReview
+        //     try {
+        //         checkExistReview = item.reviewerBookingData.id;
+        //         checkExistReview = true;
+        //     } catch (error) {
+        //         checkExistReview = false;
+        //     }
             
-        } else {
-            setStatusEdit("A");
-        }
-       
+        //     if(checkExistReview){
+        //         setStatusEdit(true);
+                
+        //         setContentEdit({
+        //             review: item.reviewerBookingData.review,
+        //             rate: item.reviewerBookingData.rate
+        //         });
+
+    
+                
+        //     } else {
+                
+                
+        //         setStatusEdit(false);
+        //         setContentEdit({
+        //             review: "",
+        //             rate: 5
+        //         });
+        //     }
+        //     setBookingSelected(item);
+
+            
+            
+
+           
+        // } else {
+            
+            
+           
+        // }
+        setBookingSelected(item);
+        setToggleModal(!toggleModal);
+        
+        // if(toggleModal) {
+        //     let checkExistReview
+            
+        //     try {
+        //         checkExistReview = item.reviewerBookingData.id;
+        //         checkExistReview = true;
+        //     } catch (error) {
+        //         checkExistReview = false;
+        //     }
+            
+        //     if(checkExistReview){
+        //         setStatusEdit(true);
+                
+        //         setContentEdit({
+        //             review: item.reviewerBookingData.review,
+        //             rate: item.reviewerBookingData.rate
+        //         });
+
+    
+                
+        //     } else {
+                
+                
+        //         setStatusEdit(false);
+        //         setContentEdit({
+        //             review: "",
+        //             rate: 5
+        //         });
+        //     }
+        //     setBookingSelected(item);
+
+            
+            
+
+           
+        // } 
+    
+
+        
+        
+
+
+
+    }
+    let handleSaveReview = async(data) => {
+            
+        let a = await handleCreateNewReviewApi(data);
+     
+        toast.success("Đánh giá thành công");
+        handleToggleModal();
+        setLoading(!loading);
+    }
+    let handleEditReview = async(data) => {
+        let a = await handleEditReviewApi(data);
+        toast.success("Cập nhật đánh giá thành công");
+        handleToggleModal();
+        setLoading(!loading);
     }
 
     useEffect(() => {
         if(idUser){
-            console.log("OK");
+           
             getBooking();
         } else {
             navigate("/login");
             toast.error("Bạn cần đăng nhập để xem thông tin đặt lịch");
         }
     },[])
+    useEffect(() => {
+        if(idUser){
+           
+            getBooking();
+        } else {
+            navigate("/login");
+            toast.error("Bạn cần đăng nhập để xem thông tin đặt lịch");
+        }
+    },[loading])
     
 
     return (
@@ -90,7 +195,15 @@ function BookingReview() {
               </td>
               <td>
                   <button className="btn btn-warning"
-                  onClick={() => handleToggleModal(item)}
+                  onClick={
+                    () =>{
+                        setToggleModal(!toggleModal)
+                        if(toggleModal) {
+                            handleToggleModal(item)
+                        } 
+                    }
+                
+                  }
                   >Xem chi tiết</button>   
                   
               </td>
@@ -227,6 +340,8 @@ function BookingReview() {
                 {toggleModal && <ModalBookingReview toggleModal={toggleModal}  info={bookingSelected} price={3000} handleToggleModal={handleToggleModal} 
                 statusEdit={statusEdit}
                 contentEdit={contentEdit}
+                handleSaveReview={handleSaveReview}
+                handleEditReview={handleEditReview}
 // handleConfirmBooking = {handleConfirmBooking}
 />}
         </div>

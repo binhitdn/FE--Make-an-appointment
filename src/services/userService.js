@@ -14,6 +14,10 @@ let getPatientIdByUserIdApi = (id) => {
 }
 let editUserApi = (user) => {
     return axios.put(`/api/edit-user`, user)
+
+}
+let changePasswordApi = (user) => {
+    return axios.put(`/api/change-password`, user)
 }
 
-export { handleLoginApi,handleCreateUserApi,getUserByIdApi,getPatientIdByUserIdApi,editUserApi }
+export { handleLoginApi,handleCreateUserApi,getUserByIdApi,getPatientIdByUserIdApi,editUserApi,changePasswordApi }

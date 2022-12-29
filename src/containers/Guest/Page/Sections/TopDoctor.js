@@ -81,6 +81,12 @@ function TopDoctor() {
                                     <div className="section-doctor-trend-item">
                                         <div className="anh-bac-si" style={{
                                             background: `url(${doctor.userData.image})`,
+                                            flexShrink: "0",
+                            backgroundClip: "content-box",
+                            border: "1px solid #e9ecef",
+                            padding: "2px",
+                            boxSizing: "border-box",
+                            boxShadow: "0 0 0 1px rgba(0,0,0,.125)",
                                         }}>
     
                                         </div>
@@ -92,7 +98,7 @@ function TopDoctor() {
                                             lang === "vi" ? "valueVi" : lang === "en" ? "valueEn" : ""
                                           
                                         ]} {doctor.userData.lastName} {doctor.userData.firstName}</h6>
-                                        <p>{ lang === "vi" ? "Chuyên khoa" : lang === "en" ? "Specialty" : "専門" } 
+                                        <p>{ lang === "vi" ? "Chuyên khoa " : lang === "en" ? "Specialty " : "専門 " } 
                                                { doctor.specialtyData.name}</p>
                                     </div>
                         </Link>

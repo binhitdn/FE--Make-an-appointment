@@ -7,7 +7,7 @@ import CommonUtils from '../../../utils/CommonUtils';
 import Lightbox from 'react-image-lightbox';
 import { toast } from 'react-toastify';
 import Select from 'react-select';
-import { handleGetAllSpecialityApi } from '../../../services/specialtyService';
+import { handleEditSpecialityApi, handleGetAllSpecialityApi } from '../../../services/specialtyService';
 
 
 
@@ -15,14 +15,13 @@ function SpecialtyManagerEdit() {
     const mdParser = new MarkdownIt(/* Markdown-it options */);
     const [nameSpecialty, setNameSpecialty] = useState('');
     const [avatar, setAvatar] = useState('');
-    const [avatarPreview, setAvatarPreview] = useState('');
     const [contentMarkdown, setContentMarkdown] = useState('');
     const [contentHTML, setContentHTML] = useState('');
     const [isOpen, setIsOpen] = useState(false);
     const [selectedSpecialty, setSelectedSpecialty] = useState(null);
     const [specialties, setSpecialties] = useState([]);
     const [description, setDescription] = useState('');
-    const [options, setOptions] = useState([]);
+    
 
 
     let handleGetDataSpecialty =async () => {
@@ -36,19 +35,7 @@ function SpecialtyManagerEdit() {
     useEffect(() => {
         handleGetDataSpecialty();
     },[])
-    useEffect(() => {
-        specialties.map(
-            (specialty, index) => {
-                let option = {
-                    value: specialty.id,
-                    label: specialty.name
-                }
-                options.push(option);
-                    
-            }
-        );
-        console.log(options);
-    },[specialties])
+    
     useEffect(() => {
         console.log('selectedSpecialty: ', selectedSpecialty);
         if (selectedSpecialty) {
@@ -71,14 +58,18 @@ function handleEditorChange({ html, text }) {
 
 
 let handleSaveSpeciality = async() => {
-    console.log('save: ', {
-        name: nameSpecialty,
-        contentHTML: contentHTML,
-        contentMarkdown: contentMarkdown,
+  let data = {
         avatar: avatar,
-        isOpen: isOpen,
-        description: description
-    });
+        contentMarkdown: contentMarkdown,
+        contentHTML: contentHTML,
+        description: description,
+        id: selectedSpecialty,
+  }
+
+  let res = await handleEditSpecialityApi(data);
+    console.log(res);
+    toast.success("Cập nhật thành công");
+
 
 }
 let validate = () => {
@@ -106,8 +97,7 @@ let handleChangeInput = (e) => {
         setContentHTML(value);
     } else if (name === 'avatar') {
         setAvatar(value);
-    } else if (name === 'avatarPreview') {
-        setAvatarPreview(value);
+    
     } else if (name === 'isOpen') {
         setIsOpen(value);
     } else if (name === 'description') {
@@ -121,15 +111,17 @@ let handleChange = (selectedDoctor) => {
     console.log(`Option selected:`, selectedDoctor);
     let specialty = specialties.find(specialty => specialty.id == selectedDoctor.value);
     
+    console.log('specialty: ', specialty);
     setNameSpecialty(specialty.name);
     setContentHTML(specialty.contentHTML);
     setContentMarkdown(specialty.contentMarkdown);
     setAvatar(specialty.image);
-    setIsOpen(specialty.isOpen);
-    setDescription(specialty.description);
+   
+    
 
     
 };
+
     return (
     <div className="manage-doctor-container">
                 <div className="manage-doctor-container__header text-center">
@@ -142,21 +134,31 @@ let handleChange = (selectedDoctor) => {
                                 value={selectedSpecialty}
                                 onChange={handleChange}
                                 options={
-                                    options
+                                   specialties.map(
+
+                                        (specialty, index) => {
+                                            let option = {
+                                                value: specialty.id,
+                                                label: specialty.name
+                                            }
+                                            return option;
+                                        }
+                                    )
                                 }
                             />
                     </div>
                     <div className="col-6">
                     <div className="col-6">
                         <label>Chọn ảnh</label>
-                                <input type="file" className="form-control" id="up-photo" hidden
+                                <input type="file" className="form-control" id="up-photo" 
                                     onChange={(e) => {
                                         
                                     }}
                                     name="avatar"
+                                    
                                    
                                 ></input>
-                                <div className="upload"><label htmlFor="up-photo" className="upload-text"> <i className="fa-solid fa-arrow-up-from-bracket icon-upload"></i> Tải Ảnh</label></div>
+                                {/* <div className="upload"><label htmlFor="up-photo" className="upload-text"> <i className="fa-solid fa-arrow-up-from-bracket icon-upload"></i> Tải Ảnh</label></div> */}
                                 <div className="preview-image"
                                     style={{ 
                                         backgroundImage: `url(${avatar})` ,
@@ -171,16 +173,14 @@ let handleChange = (selectedDoctor) => {
 
                 </div>
                 <div className="row">
-                    <div className="col-6">
-                    <label>Mô tả</label>
-                    <textarea className="form-control" rows="6" onChange={(e)=>{handleChangeInput(e)}} name="description" value={description}></textarea>
-                    </div>
+                <div className="col-6">
+                </div>
                 <div  className="col-6">
                     <label>Xem trước ảnh</label>
                     <div className="preview-image"
                     
 
-                    style={{ backgroundImage: `url(${avatarPreview})` ,height:"150px" ,
+                    style={{ backgroundImage: `url(${avatar})` ,height:"150px" ,
                 backgroundSize: "contain",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
@@ -214,7 +214,7 @@ let handleChange = (selectedDoctor) => {
                 {isOpen && (
                     <Lightbox
 
-                        mainSrc={avatarPreview}
+                        mainSrc={avatar}
                         onCloseRequest={() => setIsOpen(false)}
                     />
                 )}

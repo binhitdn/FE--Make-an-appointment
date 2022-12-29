@@ -157,14 +157,15 @@
                 font-size: 30px;
                 font-weight: 700;
                 letter-spacing: 1px;
-                color: #000;
-                margin-bottom: 20px;
+                color: var(--color);
+                                margin-bottom: 20px;
                 text-align: center;
             }
         }
         .hand-book-detail__content__note {
             margin: 0 auto;
             p {
+                color: var(--color);
                 i {
                     font-size: 13px;
                     font-weight: 300;
@@ -186,13 +187,14 @@
             width: 80%;
             margin: 0 auto;
             margin-bottom: 30px;
+            color: #000;
             
             
             p {
                 font-size: 16px;
                 font-weight: 300;
                 letter-spacing: 1px;
-                color: #000;
+                color: var(--color);
                 display: block;
                 padding: 10px;
             }
@@ -208,6 +210,12 @@
                 line-height: 2;
                 width: 90%;
                 margin: 0 auto;
+                color: var(--color) !important;
+                p {
+                    
+                    color: var(--color) !important;
+                    
+                }
                 img {
                     width: 100%;
                     border-radius: 10px;
@@ -221,6 +229,7 @@
 .hand-book-detail__content__footer__comment__list__item__reply__list__item {
     .hand-book-detail__content__footer__comment__list__item__reply__list__item__header {
         display: flex;
+        
         .hand-book-detail__content__footer__comment__list__item__reply__list__item__avatar {
             display: flex;
             justify-content: center;
@@ -230,6 +239,7 @@
         .hand-book-detail__content__footer__comment__list__item__reply__list__item__name {
             display: flex;
             justify-content: center;
+            color: var(--color);
             align-items: center;
 
         }
@@ -237,6 +247,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            color: var(--color);
 
         }
     }

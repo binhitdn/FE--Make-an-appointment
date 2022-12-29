@@ -1,3 +1,17 @@
+html[data-theme="dark"]  {
+    --background-color-doctor-content-component: rgb(53, 53, 53);
+    --background-color-doctor-review-item: rgb(53, 53, 53);
+    
+    
+}
+html[data-theme="light"]  {
+    --background-color-doctor-content-component: rgb(241, 238, 238);
+    --background-color-doctor-review-item:  rgb(247, 241, 241);
+    
+  
+
+
+}
 .doctor-detail-container{
     
     margin-top: 30px;
@@ -35,7 +49,7 @@
                 width: 80%;
                 line-height: 1.5;
                 letter-spacing: 0.75px;
-                color: #555;
+                color: var(--color);
                 font-size: 13px;
                 @media screen and (max-width: 650px) {
                     font-size: 10px;
@@ -64,7 +78,7 @@
 .doctor-content-component {
     border-top: 1px solid #ccc;
     margin-top: 0;
-    background-color: rgb(241, 240, 240);
+    background-color: var(--background-color-doctor-content-component);
     border-radius: 10px;
 
 }
@@ -112,7 +126,7 @@
 .doctor-review-item {
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    background-color: rgb(247, 241, 241);
+    background-color: var(--background-color-doctor-review-item);
     padding: 30px;
     width: 70%;
     margin: 0 auto;

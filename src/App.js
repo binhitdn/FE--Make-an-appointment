@@ -10,6 +10,7 @@ import { getUserByIdApi } from "./services/userService";
 import { handleGetAllSpecialityApi } from "./services/specialtyService";
 import { handleGetTopDoctorApi } from "./services/doctorService";
 import { handGetAllHandbook } from "./services/handbookService";
+import { useEffect } from "react";
 function App() {
     const [author, setAuthor] = React.useState(handleAuth().roleId ? handleAuth().roleId : "guest");
     const [loading, setLoading] = React.useState(true);
@@ -20,17 +21,17 @@ function App() {
     const [lang, setLang] = React.useState(localStorage.getItem("language") ? localStorage.getItem("language") : "ja");
     let language = localStorage.getItem('language');
         if (language) {
-          console.log("Không có language");
+         
         } else {
           localStorage.setItem('language', "ja");
-          console.log("Có language");
+         
         }
 
     React.useEffect(() => {
         if (handleAuth().id) {
             (async () => {
                 let api = await getUserByIdApi(handleAuth().id);
-                console.log("api: ", api.users);
+          
                 setAccount(api.users);
                 
                 
@@ -60,19 +61,11 @@ function App() {
 
             
     };
-    React.useEffect(() => {
-        console.log("account: ", account);
-        console.log(handleAuth())
-    }, [account]);
-    React.useEffect(() => {
-        console.log("specialty: ", specialty);
-    }, [specialty]);
-    React.useEffect(() => {
-        console.log("doctor: ", doctor);
-    }, [doctor]);
-    React.useEffect(() => {
-        console.log("handBook: ", handBook);
-    }, [handBook]);
+    useEffect(() => {
+        console.log('run');
+    })
+   
+
 
 
 

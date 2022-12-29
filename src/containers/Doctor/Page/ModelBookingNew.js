@@ -82,10 +82,17 @@ function ModelBookingNew(props) {
                                     <p>Họ Tên Bệnh Nhân: {props.info.patientData.userData.lastName} {props.info.patientData.userData.firstName} </p>
                                 </div>
                             </div>
-                            <div className="col-6">
+                            {/* <div className="col-6">
                                 <div className="input-icon">
                                     <i class="fa-regular fa-calendar input-icon-icon"></i>
-                                    <p>Ngày sinh: 01/01/1999</p>
+                                   
+                                </div>
+                            </div> */}
+                            <div className="col-6">
+                                <div className="input-icon">
+
+                                    <i class="fa-light fa-square-user input-icon-icon"></i>
+                                    <p>Giới tính: {props.info.patientData.userData.gender}</p>
                                 </div>
                             </div>
                         </div>
@@ -107,25 +114,28 @@ function ModelBookingNew(props) {
                         </div>
                         <div className="row">
 
-                            <div className="col-6">
+                            <div className="col-12">
                                 <div className="input-icon">
                                     <i class="fa-sharp fa-solid fa-location-dot input-icon-icon"></i>
                                     <p>Địa chỉ: {props.info.patientData.userData.address}</p>
                                 </div>
                             </div>
-                            <div className="col-6">
+                            {/* <div className="col-6">
                                 <div className="input-icon">
 
                                     <i class="fa-light fa-square-user input-icon-icon"></i>
                                     <p>Giới tính: {props.info.patientData.userData.gender}</p>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="row">
                             <div className="col-12">
                                 <div className="input-icon">
                                     <i class="fa-solid fa-circle-envelope input-icon-icon"></i>
-                                    <p>ko biết </p>
+                                    <p>
+                                        
+                                        Lí do khám: {props.info.reason}
+                                    </p>
                                 </div>
                             </div>
 
@@ -134,7 +144,7 @@ function ModelBookingNew(props) {
                 </div>
                 <div className="modal-footer">
                     <input type="button" className="btn btn-primary" value="Xác nhận" onClick={()=>{handleComfirmBooking(props.info.id)}} />
-                    <input type="button" className="btn btn-continue" data-dismiss="modal" value="Hủy" 
+                    <input type="button" className="btn btn-continue" data-dismiss="modal" value="Hủy cuộc hẹn" 
                     onClick={()=>{
                         props.handleToggleModalDestroy();
                         props.handleToggleModal();

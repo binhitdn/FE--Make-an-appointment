@@ -108,7 +108,7 @@ function DoctorPage() {
         if(rateDoctor % 1 !== 0) {
             list.push(<i className="fas fa-star-half-alt star-web"></i>)
         }
-        for (let i = 1; i <= 5 - Math.round(rateDoctor); i++) {
+        for (let i = 1; i <= 5 - Math.round(rateDoctor) - 1; i++) {
             list.push(<i className="fa-regular fa-star star-web"></i>)
         }
         return list;
@@ -124,7 +124,14 @@ function DoctorPage() {
                 <div className="doctor-detail-container">
                     <div className="doctor-info">
                         <div className="doctor-avatar"
-                            style={{ backgroundImage: `url(${doctorAvatar})` }}
+                            style={{ backgroundImage: `url(${doctorAvatar})`,
+                            flexShrink: "0",
+                            backgroundClip: "content-box",
+                            border: "1px solid #e9ecef",
+                            padding: "2px",
+                            boxSizing: "border-box",
+                            boxShadow: "0 0 0 1px rgba(0,0,0,.125)",
+                        }}
 
                         ></div>
                         <div className="doctor-info-content">
@@ -211,7 +218,7 @@ function DoctorPage() {
                                                     renderReview()
                                                 }
                                                 {
-                                                    rateDoctor
+                                                    rateDoctor.toFixed(2)
                                                 }
                                             </Fragment>
                                         )
@@ -227,6 +234,7 @@ function DoctorPage() {
                         <DoctorSchedule idDoctor={doctorId}
                          layout ="row"
                          doctorName={doctorName}
+                         doctorAvatar={doctorAvatar}
                          doctorPosition={doctorPosition}
                         />
 

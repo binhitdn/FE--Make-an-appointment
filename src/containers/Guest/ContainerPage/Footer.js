@@ -1,7 +1,70 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./css/Footer.scss";
+import { AuthToken } from "../../../utils/AuthToken";
 function Footer() {
-  const embed = ' <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7132.066786934034!2d108.252355!3d15.975292999999999!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1295cb3d313469c9!2sVietnam%20-%20Korea%20University%20of%20Information%20and%20Communication%20Technology.!5e1!3m2!1sen!2sus!4v1670668267472!5m2!1sen!2sus" width="500" height="300" style="border:0;border-radius: 20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'
+  const {lang} = useContext(AuthToken);
+  const embed = ' <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7132.066786934034!2d108.252355!3d15.975292999999999!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1295cb3d313469c9!2sVietnam%20-%20Korea%20University%20of%20Information%20and%20Communication%20Technology.!5e1!3m2!1sen!2sus!4v1670668267472!5m2!1sen!2sus" width="500" height="300" style="border:0;border-radius: 20px; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'
+  let dataLanguage = {
+    title: {
+      name: "HappyCare",
+      address: {
+        vi: "Địa chỉ",
+        en: "Address",
+        ja: "住所",
+      },
+      hotline: {
+        vi: "Hotline",
+        en: "Hotline",
+        ja: "ホットライン",
+      },
+      email: {
+        vi: "Email",
+        en: "Email",
+        ja: "メール",
+        }
+    },
+    
+    description: {
+      vi: "NỀN TẢNG CHĂM SÓC SỨC KHỎE TOÀN DIỆN",
+      en: "HEALTHCARE PLATFORM",
+      ja: "健康ケアプラットフォーム",
+    
+    },
+    address: {
+      vi: "Địa chỉ: Hòa Khương,Hòa Vang, TP.Đà Nẵng",
+      en: "Address: Hoa Khuong, Hoa Vang, Da Nang City",
+      ja: "住所：ホアクワン、ホアヴァン、ダナン市",
+    },
+    hotline: {
+      vi: "Hotline: 0356719030",
+      en: "Hotline: 0356719030",
+      ja: "ホットライン：0356719030",
+    },
+    email: {
+      vi: "Email: happycare2k3@gmail.com",
+      en: "Email:  happycare2k3@gmail.com",
+      ja: "メール：  happycare2k3@gmail.com",
+    },
+    input: {
+      vi: "Email của bạn",
+      en: "Your email",
+      ja: "あなたのメール",
+    },
+    button: {
+      vi: "Đăng ký nhận thông báo",
+      en: "Sign up for notifications",
+      ja: "通知を登録する",
+    },
+    coppyright: {
+      vi: "Bản quyền thuộc về HappyCare",
+      en: "All rights reserved",
+      ja: "著作権はHappyCareに帰属します",
+    }
+     
+
+  }
+    
     return (
         <footer class="footer">
      <div class="container">
@@ -23,11 +86,11 @@ function Footer() {
         }
         >
 
-        </div>HappyCare</h4>
-          <h5>NỀN TẢNG CHĂM SÓC SỨC KHỎE TOÀN DIỆN</h5>
-          <h6><b>Địa chỉ:</b> Hòa Khương,Hòa Vang, TP.Đà Nẵng</h6>
-          <h6><b>Hotline:</b> 0356719030</h6>
-          <h6><b>Email: </b>happycare2003@gmail.com</h6>   
+        </div>{dataLanguage.title.name}</h4>
+          <h5>{dataLanguage.description[lang]}</h5>
+          <h6><b>{dataLanguage.title.address[lang]}</b> {dataLanguage.address[lang]}</h6>
+          <h6><b>{dataLanguage.title.hotline[lang]}</b> {dataLanguage.hotline[lang]}</h6>
+          <h6><b>{dataLanguage.title.email[lang]} </b>{dataLanguage.email[lang]}</h6>   
           <div className="social"
           style={{
             display: "flex",
@@ -51,7 +114,7 @@ function Footer() {
             gap: "30px",
           }}
           >
-            <input type="text" placeholder="Email của bạn"
+            <input type="text" placeholder={dataLanguage.input[lang]} 
             style={{
               width: "400px",
               borderRadius: "20px",
@@ -60,8 +123,10 @@ function Footer() {
               paddingLeft: "10px",
               paddingRight: "10px",
               margin: "0",
+              height: "40px",
               
             }}
+            
             />
             <button type="submit" class="btn btn-warning"
             style={{
@@ -72,7 +137,9 @@ function Footer() {
               padding: "10px 10px",
               margin: "0",
             }}
-            >Đăng ký nhận thông báo</button>
+            >
+              {dataLanguage.button[lang]}
+            </button>
           </div> 
               
         </div>
@@ -123,7 +190,11 @@ function Footer() {
   
   >
             <b>© 2023 Copyright:
-    <Link to="/"> HappyCare</Link>
+    <Link to="/"> 
+    {
+      dataLanguage.coppyright[lang]
+    }
+    </Link>
     </b>
       </div>
      
