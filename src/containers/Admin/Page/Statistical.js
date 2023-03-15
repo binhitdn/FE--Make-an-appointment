@@ -105,7 +105,7 @@ function Statistical(){
         </tr>
       </MDBTableHead>
       <MDBTableBody>
-        {
+        { DoctorIncome &&
             DoctorIncome.map((item, index) => {
                 return (
                     <tr>

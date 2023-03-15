@@ -4,7 +4,8 @@ import "./css/Footer.scss";
 import { AuthToken } from "../../../utils/AuthToken";
 function Footer() {
   const {lang} = useContext(AuthToken);
-  const embed = ' <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7132.066786934034!2d108.252355!3d15.975292999999999!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1295cb3d313469c9!2sVietnam%20-%20Korea%20University%20of%20Information%20and%20Communication%20Technology.!5e1!3m2!1sen!2sus!4v1670668267472!5m2!1sen!2sus" width="500" height="300" style="border:0;border-radius: 20px; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'
+  const embed2 = ' <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7132.066786934034!2d108.252355!3d15.975292999999999!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1295cb3d313469c9!2sVietnam%20-%20Korea%20University%20of%20Information%20and%20Communication%20Technology.!5e1!3m2!1sen!2sus!4v1670668267472!5m2!1sen!2sus" width="500" height="300" style="border:0;border-radius: 20px; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'
+  const embed = '<iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d9662.09512094317!2d108.24799176853413!3d15.975149228906506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e6!4m3!3m2!1d16.0544168!2d108.2021783!4m5!1s0x3142108997dc971f%3A0x1295cb3d313469c9!2zdHLGsOG7nW5nIMSR4bqhaSBo4buNYyBjw7RuZyBuZ2jhu4cgdGjDtG5nIHRpbiB2w6AgdHJ1eeG7gW4gdGjDtG5nIHZp4buHdCBow6Bu!3m2!1d15.9752931!2d108.252355!5e1!3m2!1sja!2s!4v1672404328028!5m2!1sja!2s" width="500" height="300" style="border:0;border-radius: 20px; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'
   let dataLanguage = {
     title: {
       name: "HappyCare",

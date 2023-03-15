@@ -108,7 +108,7 @@ function DoctorPage() {
         if(rateDoctor % 1 !== 0) {
             list.push(<i className="fas fa-star-half-alt star-web"></i>)
         }
-        for (let i = 1; i <= 5 - Math.round(rateDoctor) - 1; i++) {
+        for (let i = 0; i <= 5 - Math.round(rateDoctor) - 1; i++) {
             list.push(<i className="fa-regular fa-star star-web"></i>)
         }
         return list;

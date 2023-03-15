@@ -31,10 +31,7 @@ function App() {
         if (handleAuth().id) {
             (async () => {
                 let api = await getUserByIdApi(handleAuth().id);
-          
-                setAccount(api.users);
-                
-                
+                setAccount(api.users);                       
             })();
             
             

@@ -50,32 +50,16 @@ function DoctorSchedule(props) {
     }, [])
 
     let updateSchedule = async () => {
-    //    (
-    //           async () => {
                 setLoading(true);
                 let data = await handleGetScheduleByDateApi( window.location.pathname.split("/")[2], date);
                 setArrSchedule(data.data)
                 setLoading(false);
-                // }
-        // ).then(() => {
-        //     setLoading(false);
-        // })
     }
 
     useEffect(() => {
         updateSchedule();
     }, [date])
     
-    
-    let parsePhoto = (avatar) => {
-        if (avatar) {
-
-            return new Buffer(avatar, 'base64').toString('binary');
-
-        } else {
-            return "";
-        }
-    }
     useEffect(() => {
         getSelectDate();
     },[] );
@@ -115,7 +99,7 @@ function DoctorSchedule(props) {
             return item.statusID !== "S3";
         })
         let data3 = data.filter((item) => {
-            return item.statusID !== "S4";
+            return item.statusID !== "S4" && item.statusID !== "S3";
         })
         if(data3.length > 0) {
             toast.error("Bạn đã có lịch khám chưa hoàn thành")
