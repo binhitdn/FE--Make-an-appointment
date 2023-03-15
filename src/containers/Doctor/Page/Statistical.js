@@ -10,7 +10,7 @@ import moment from "moment/moment";
 import { handleGetDoctorByIdApi, handleGetReviewByDoctorIdApi } from "../../../services/doctorService";
 import BookingAboutToExpire from "./BookingAboutToExpire";
 import NotData from "../../../components/NotData";
-import { Scrollbars } from 'react-custom-scrollbars';
+
 
 
 function Statistical(){
