@@ -3,7 +3,7 @@ import _ from 'lodash';
 // import config from './config';
 
 const instance = axios.create({
-    baseURL: 'http://3.86.132.172:8080/',
+    baseURL: 'https://d3hkqf22fib3gs.cloudfront.net/',
     // withCredentials: true
 });
 
