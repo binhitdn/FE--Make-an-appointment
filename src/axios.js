@@ -3,7 +3,7 @@ import _ from 'lodash';
 // import config from './config';
 
 const instance = axios.create({
-    baseURL: 'https://be-make-an-appointment.onrender.com',
+    baseURL: 'http://3.86.132.172:8080/',
     // withCredentials: true
 });
 
